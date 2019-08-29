@@ -5,10 +5,10 @@ const fs = require('fs');
 
 http.createServer((request, response) => {
   var addr = request.url,
-    q = url.parse(addr, true),
+    queryValue = url.parse(addr, true),
     filePath = '';
 
-  if (q.pathname.includes('documentation')) {
+  if (queryValue.pathname.includes('documentation')) {
     filePath = (__dirname + '/documentation.html');
   } else {
     filePath = 'index.html';
@@ -33,9 +33,8 @@ http.createServer((request, response) => {
     response.end();
 
   });
+ 
+  
 
-}).listen(8080);
-
-
-
+}).listen(8080, console.log('listening on port 8080'));
 
