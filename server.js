@@ -1,6 +1,7 @@
-const http = require('http'),
-  fs = require('fs'),
-  url = require('url');
+const url = require('url');
+const http = require('http');
+const fs = require('fs');
+  
 
 http.createServer((request, response) => {
   var addr = request.url,
@@ -18,6 +19,15 @@ http.createServer((request, response) => {
       throw err;
     }
 
+    fs.appendFile('log.txt', 'URL: ' + addr + '\nTimestamp: ' + new Date() + '\n\n', function(err) {
+        if (err) {
+          console.log(err);
+        }
+          else {
+        console.log('Added to log.');
+        }
+      });
+
     response.writeHead(200, { 'Content-Type': 'text/html' });
     response.write(data);
     response.end();
@@ -25,4 +35,7 @@ http.createServer((request, response) => {
   });
 
 }).listen(8080);
+
+const http = require('http');
+
 
