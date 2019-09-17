@@ -15,5 +15,127 @@
           <br>
           The server­side of the myFlix application processes user requests & performs operations against the data stored in the database.
         </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>URL</th>
+              <th>HTTP method</th>
+              <th>Request body data format</th>
+              <th>Response body data format</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Get a list of all movies to the user</td>
+              <td>/movies</td>
+              <td>GET</td>
+              <td>None</td>
+              <td>
+                JSON object holding data about all movies. Example:
+                <p>
+                  { Title: " The Godfather",  description: “movie description”, Genre: {Name: "Drama", Description: " Movie with serious undertones."}, Director: { Francis Ford Cappola", Bio: "Full directors bio", Birth: "1939", Death: "2018"}, Actors: ["Marlon Brando", "Al Pacino"], ImagePath: "godfather.png", Featured: true}
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>Get data about a single movie by title</td>
+              <td>/movies/[title]</td>
+              <td>GET</td>
+              <td>None</td>
+              <td>
+                JSON object holding data about a single movie. Example:
+                <p>
+                  { Title: " The Godfather",  description: “movie description”, Genre: {Name: "Drama", Description: " Movie with serious undertones."}, Director: { Francis Ford Cappola", Bio: "Full directors bio", Birth: "1939", Death: "2018"}, Actors: ["Marlon Brando", "Al Pacino"], ImagePath: "godfather.png", Featured: true}
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>Get data about a genre by name/title</td>
+              <td>/genre/[name]</td>
+              <td>GET</td>
+              <td>None</td>
+              <td>
+                A JSON object holding data about a genre (description) by name/title. Example: 
+                <p>
+                  {Name: "Drama", Description: "Movie with serious undertones, etc."}
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>Return data about a director by name</td>
+              <td>/director/[name]</td>
+              <td>GET</td>
+              <td>None</td>
+              <td>
+                A JSON object holding data about a director (bio, birth year, death year) by name. Example: 
+                <p>
+                  {
+                    Name: ‘”Francis Ford Cappola”
+                    bio: ” ..full bio..”,
+                    birth year: "1939",
+                    death year: “2018”
+                    }
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>Add a new user to the registry.</td>
+              <td>/users</td>
+              <td>POST</td>
+              <td>
+                JSON object holding data about the user to add. Example: 
+                <p>
+                  { username: "John Smith", password: "Malipiso123", email: "john.smith@email.com", dob: "01/01/1988"}
+                </p>
+              </td>
+              <td>
+                JSON object holding data about the user that was add. Example:
+                <p>
+                  {id: 3, username: "John Smith", password: "Malipiso123", email: "john.smith@email.com", dob: "01/01/1988"}
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>Update a user's information</td>
+              <td>/users/[username]</td>
+              <td>PUT</td>
+              <td>
+                JSON object holding data about the user to add. Example:
+                <p>
+                  { username: "John Smith", password: "Malipiso123", dob: "01/01/1988"}
+                </p>
+              </td>
+              <td>Confirmation message advising that user's information has been updated.</td>
+            </tr>
+            <tr>
+              <td>Allow users to add a movie to their list of favorites</td>
+              <td>/favorites/[username]/movies/[movieID]</td>
+              <td>POST</td>
+              <td>None</td>
+              <td>
+                  Confirmation message advising that movie has been added to the favourite list.
+              </td>
+            </tr>
+            <tr>
+              <td>Allow users to remove a movie from their list of favorites</td>
+              <td>/favorites/[username]/movies/[movieID]</td>
+              <td>DELETE</td>
+              <td>None</td>
+              <td>
+                  Message advising that movie has been deleted from the favourite list.
+              </td>
+            </tr>
+            <tr>
+              <td>Allow existing users to deregister</td>
+              <td>/users/[username]</td>
+              <td>DELETE</td>
+              <td>None</td>
+              <td>Message advising that user has been removed from the registry.</td>
+            </tr>
+          </tbody>
+        </table>
+  
     </div>
     <body>
