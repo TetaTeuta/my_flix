@@ -111,27 +111,27 @@ app.post("/movies", (req, res) => {
   });
 
   //Allow users to add a movie to their list of favorites
-  app.post("/favorites/[username]/movies/[movieID]", (req, res) => {
+  app.post("/favorites/:Username/movies/:MovieID", (req, res) => {
     res.send('Successful POST request returning data about favourite list');
 });
 
 
 //PUT
 
-app.put("/users/[username]", (req, res) => {
+app.put("/users/:Username", (req, res) => {
     res.send('Successful PUT request returning data about new users');
 });
 
 //DELETE
 
 //deletes the movie from users favourites list 
-app.delete('/favorites/[username]/movies/[movieID]', (req, res) => {
+app.delete('/favorites/:Username/Movies/:MovieID', (req, res) => {
     res.send('Movie deleted from favourites');
 });
 
 
 //deletes the user from registry 
-app.delete('/users/[username]', (req, res) => {
+app.delete('/users/:Username', (req, res) => {
     res.send('user deleted from registry');
 });
 
