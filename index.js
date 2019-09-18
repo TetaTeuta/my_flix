@@ -69,24 +69,24 @@ app.get('/movies', function(req, res) {
     res.json(topMovies)
   });
 
-// Gets the data about a single movie by name
-  app.get("/movies/:name", (req, res) => {
-    res.json(topMovies.find( (movie) => 
-      { return movie.name === req.params.name }));  //req.params returns a JS object after the query string is parsed
-  });
 
+// Gets the data about a single movie by name
+app.get("/movies/:title", (req, res) => {
+    res.json(topMovies.find( (movie) => 
+      { return movie.title === req.params.title }));  //req.params returns a JS object after the query string is parsed
+  });
+  
   // Gets the data about genre by name
   app.get("/genre/:Genre", (req, res) => {
     res.json(topMovies.find( (movie) => 
-      { return movie.Genre === req.params.Genre }));  
+      { return movie.Genre === req.params.Genre }));     
   });
-
+  
   // Gets the data about director by name
   app.get("/director/:Director", (req, res) => {
     res.json(topMovies.find( (movie) => 
-      { return movie.Director === req.params.Director }));  
+      { return movie.Director === req.params.Director }));   
   });
-
 
 //POST
 
@@ -120,6 +120,19 @@ app.post("/movies", (req, res) => {
 
 app.put("/users/[username]", (req, res) => {
     res.send('Successful PUT request returning data about new users');
+});
+
+//DELETE
+
+//deletes the movie from users favourites list 
+app.delete('/favorites/[username]/movies/[movieID]', (req, res) => {
+    res.send('Movie deleted from favourites');
+});
+
+
+//deletes the user from registry 
+app.delete('/users/[username]', (req, res) => {
+    res.send('user deleted from registry');
 });
 
 
