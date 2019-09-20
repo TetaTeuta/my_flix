@@ -9,46 +9,52 @@ const app = express();
 app.use(bodyParser.json());
 
 
-let topMovies = [ {
+let topMovies = [{
+
     title : 'The League of Extraordinary Gentlemen',
-    director : 'Stephen Norrington'
+    director : 'Stephen Norrington',
+    genre: 'fantasy'
 },
 {
     title : 'Lord of the Rings',
-    author : 'J.R.R. Tolkien'
+    director : 'J.R.R. Tolkien',
+    genre: 'fantasy'
 },
 {
     title : 'Twilight',
-    author : 'Stephanie Meyer'
+    director : 'Stephanie Meyer',
+    genre: 'fantasy'
 },
 {
     title :  'Mamma Mia',
-    author : 'Phyllida Lloyd'
+    director : 'Phyllida Lloyd',
+    genre: 'musical'
 },
 {
     title :  'Mamma Mia 2',
-    author : 'Phyllida Lloyd'
+    director : 'Phyllida Lloyd',
+    genre: 'musical'
 },
 {
     title :  'The Godfather',
-    author : 'Francis Ford Coppola'
+    director : 'Francis Ford Coppola',
+    genre: 'drama'
 },
 {
     title :  'P.S. I Love You',
-    author : 'Richard LaGravenese'
-},
-{
-    title :  'The Godfather',
-    author : 'Francis Ford Coppola'
+    director : 'Richard LaGravenese',
+    genre: 'drama'
 },
 {
     title :  'The Curious Case of Benjamin Button',
-    author : 'David Fincher'
+    director : 'David Fincher',
+    genre: 'drama'
 },
 {
     title :  'Blue Is the Warmest Colour',
-    author : 'Abdellatif Kechiche'
-}]
+    director : 'Abdellatif Kechiche',
+    genre: 'drama' 
+}];
 
 
 app.use(morgan('common'));
@@ -77,13 +83,13 @@ app.get("/movies/:title", (req, res) => {
   });
   
   // Gets the data about genre by name
-  app.get("/genre/:Genre", (req, res) => {
+  app.get("/genre/:genre", (req, res) => {
     res.json(topMovies.find( (movie) => 
-      { return movie.Genre === req.params.Genre }));     
+      { return movie.genre === req.params.genre }));     
   });
   
   // Gets the data about director by name
-  app.get("/director/:Director", (req, res) => {
+  app.get("/director/:director", (req, res) => {
     res.json(topMovies.find( (movie) => 
       { return movie.Director === req.params.Director }));   
   });
@@ -111,27 +117,27 @@ app.post("/movies", (req, res) => {
   });
 
   //Allow users to add a movie to their list of favorites
-  app.post("/favorites/:Username/movies/:MovieID", (req, res) => {
+  app.post("/favorites/:username/movies/:MovieID", (req, res) => {
     res.send('Successful POST request returning data about favourite list');
 });
 
 
 //PUT
 
-app.put("/users/:Username", (req, res) => {
+app.put("/users/:username", (req, res) => {
     res.send('Successful PUT request returning data about new users');
 });
 
 //DELETE
 
 //deletes the movie from users favourites list 
-app.delete('/favorites/:Username/Movies/:MovieID', (req, res) => {
+app.delete('/favorites/:username/movies/:MovieID', (req, res) => {
     res.send('Movie deleted from favourites');
 });
 
 
 //deletes the user from registry 
-app.delete('/users/:Username', (req, res) => {
+app.delete('/users/:username', (req, res) => {
     res.send('user deleted from registry');
 });
 
