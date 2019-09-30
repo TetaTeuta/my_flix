@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 
 app.use(morgan('common'));
-app.use('/documentation.html', express.static(__dirname + '/public'));
+app.use(express.static('public'));
 app.use(function (err, req, res, next){
     console.error(err.stack);                // err.stack is default error-handling middleware function
     res.status(500).send('Something broke!');
