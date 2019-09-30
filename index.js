@@ -61,9 +61,9 @@ app.get('/movies', function(req, res) {
   
   // Gets the movies with same genere by genre name
   app.get("/genre/:Name", function(req, res) {
-    Movies.find({ "Genre.Name" : req.params.Name })  
+    Movies.findOne({ "Genre.Name" : req.params.Name })  
     .then(function(movies) {
-      res.json(movies)
+      res.json(movies.Genre)
     })
     .catch(function(err) {
       console.error(err);
@@ -73,10 +73,10 @@ app.get('/movies', function(req, res) {
 
   
   // Gets the movies from single director by name
-  app.get("/directors/:Name", function(req, res) {     //ne radi
-    Movies.find({ "Director.Name" : req.params.Name })  
+  app.get("/directors/:Name", function(req, res) {    
+    Movies.findOne({ "Director.Name" : req.params.Name })  
     .then(function(directors) {
-      res.json(directors)
+      res.json(directors.Director)
     })
     .catch(function(err) {
       console.error(err);
