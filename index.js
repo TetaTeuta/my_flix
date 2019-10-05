@@ -13,7 +13,11 @@ const {check, validationResult} = require('express-validator');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true}, function(){
+// mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true}, function(){
+//   console.log('mongodb connected')
+// });
+
+mongoose.connect('mongodb+srv://Teveta100:Motori2812@myflixdb-tr84f.mongodb.net/admin?retryWrites=true&w=majority', {useNewUrlParser: true}, function(){
   console.log('mongodb connected')
 });
 

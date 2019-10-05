@@ -41,3 +41,6 @@ var movieSchema = mongoose.Schema({
   
   module.exports.Movie = Movie;    //this exports modules
   module.exports.User = User;
+
+
+
