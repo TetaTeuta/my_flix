@@ -7,10 +7,7 @@ var Users = Models.User;
 var JWTStrategy = passportJWT.Strategy;
 var ExtractJWT = passportJWT.ExtractJwt;
 
-passport.use(new LocalStrategy({
-  usernameField: 'Username',
-  passwordField: 'Password'
-}, (username, password, callback) => {
+passport.use(new LocalStrategy(function (username, password, callback)  {
   console.log(username + '  ' + password);
   Users.findOne({ Username: username }, (error, user) => {
     if (error) {
