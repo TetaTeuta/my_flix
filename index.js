@@ -17,9 +17,18 @@ const app = express();
 //   console.log('mongodb connected')
 // });
 
-mongoose.connect('mongodb+srv://Teveta100:Motori2812@myflixdb-tr84f.mongodb.net/admin?retryWrites=true&w=majority', {useNewUrlParser: true}, function(){
+const url = 'mongodb+srv://Teveta100:Motori2812@myflixdb-tr84f.mongodb.net/myFlixDB?retryWrites=true&w=majority'
+mongoose.connect(url, {useNewUrlParser: true}, function(){
   console.log('mongodb connected')
+  mongoose.connection.on('error', (e) => {
+    console.log('Error', e)
+  });
+  console.log(mongoose.connections[0] === mongoose.connection)
 });
+
+// mongoose.connect('mongodb+srv://Teveta100:Motori2812@myflixdb-tr84f.mongodb.net/myFlixDB?retryWrites=true&w=majority', {useNewUrlParser: true}, function(){
+//   console.log('mongodb connected')
+// });
 
 // var allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'https://my-flix-teuta.herokuapp.com'];
 
@@ -55,7 +64,7 @@ app.get('/', function(req, res) {
 
 
   //get all movies
-app.get('/movies', passport.authenticate('jwt', { session: false }), function(req, res) {
+app.get('/movies', function(req, res) {
 
   Movies.find()
   .then(function(movies) {
