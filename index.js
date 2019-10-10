@@ -27,7 +27,7 @@ const app = express();
 // });
 
 mongoose.connect(
-  'mongodb+srv://Teveta100:Motori2812@myflixdb-tr84f.mongodb.net/admin?retryWrites=true&w=majority ',
+  'mongodb+srv://Teveta100:Motori2812@myflixdb-tr84f.mongodb.net/myflixdb?retryWrites=true&w=majority ',
   { useNewUrlParser: true }
 );
 
