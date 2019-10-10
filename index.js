@@ -26,7 +26,7 @@ const app = express();
 //   console.log(mongoose.connections[0] === mongoose.connection)
 // });
 
-mongoose.connect('mongodb+srv://Teveta100:Motori2812@myFlixDB-tr84f.mongodb.net/myFlixDB?retryWrites=true&w=majority', {useNewUrlParser: true}, function(){
+mongoose.connect('mongodb+srv://Teveta100:Motori2812@myflixdb-tr84f.mongodb.net/admin?retryWrites=true&w=majority', {useNewUrlParser: true}, function(){
   console.log('mongodb connected')
 });
 
