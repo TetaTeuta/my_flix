@@ -22,6 +22,19 @@ mongoose.connect(
   { useNewUrlParser: true }
 );
 
+var allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'https://my-flix-teuta.herokuapp.com', 'http://localhost:1234'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isn’t found on the list of allowed origins
+      var message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+      return callback(new Error(message), false);
+    }
+    return callback(null, true);
+  }
+}));
+
 app.use(bodyParser.json());
 
 //passport authorization in auth.js file
@@ -199,14 +212,14 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), [
   Users.findOneAndUpdate({
     Username: req.params.Username
   }, {
-    $set:
-    {
-      Username: req.body.Username,
-      Password: hashedPassword,
-      Email: req.body.Email,
-      Birthday: req.body.Birthday
+      $set:
+      {
+        Username: req.body.Username,
+        Password: hashedPassword,
+        Email: req.body.Email,
+        Birthday: req.body.Birthday
 
-    }
+      }
     },
     { new: true }, //This line makes sure that the updated document is returned
     function (err, updatedUser) {
