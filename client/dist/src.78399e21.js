@@ -32100,6 +32100,7 @@ function (_React$Component) {
 
   _createClass(MyFlixApplication, [{
     key: "render",
+    //this tells that class will be a react component 
     value: function render() {
       return _react.default.createElement("div", {
         className: "my-flix"
