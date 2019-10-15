@@ -57,9 +57,9 @@ app.get('/', function (req, res) {
 //get all movies
 app.get('/movies', function (req, res) {
 
-  Movies.findAll()
+  Movies.find()
     .then(function (movies) {
-      res.status(201).json(Movies)
+      res.status(201).json(movies)
     })
     .catch(function (err) {
       console.error(err);
