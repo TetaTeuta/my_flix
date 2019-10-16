@@ -6,7 +6,7 @@ import { MovieView } from '../movie-view/movie-view';
 export class MainView extends React.Component {
 
     constructor() {
-        super();
+        super();                  //super is mandatory when if it has contructor 
 
         this.state = {
             movies: null,
@@ -37,7 +37,7 @@ export class MainView extends React.Component {
         return (
             <div className="main-view">
                 {selectedMovie
-                    ? <MovieView movie={selectedMovie} />
+                    ? <MovieView movie={selectedMovie} />      //loop over the movies array and return a div for each movie within the array.
                     : movies.map(movie => (
                         <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
                     ))
