@@ -27,7 +27,7 @@ export class MovieView extends React.Component {
                     <div className="label">Description</div>
                     <div className="value">{movie.Description}</div>
                 </div>
-                <img className="movie-poster" src={movie.ImageUrl} />
+                <img className="movie-poster" src={movie.ImagePath} />
                 <div className="movie-genre">
                     <div className="label">Genre</div>
                     <div className="value">{movie.Genre.Name}</div>
@@ -37,6 +37,8 @@ export class MovieView extends React.Component {
                     <div className="value">{movie.Director.Name}</div>
                 </div>
             </div>
+
+
         );
     }
 }
