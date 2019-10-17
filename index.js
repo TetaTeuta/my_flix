@@ -4,10 +4,10 @@ const morgan = require('morgan');
 const uuid = require('uuid');
 const mongoose = require('mongoose');
 const Models = require('./models.js');
-const Movies = Models.Movies;
+const Movies = Models.Movie;
 const Users = Models.User;
 const cors = require('cors');
-const passport = require('passport');
+const passport = require('passport'); s
 require('./passport');
 const { check, validationResult } = require('express-validator');
 
