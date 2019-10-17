@@ -83,7 +83,7 @@ app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), func
 
 // Gets the movies with same genere by genre name
 app.get("/genre/:Name", passport.authenticate('jwt', { session: false }), function (req, res) {
-  Movie.findOne({ "Genre.Name": req.params.Name })
+  Movies.findOne({ "Genre.Name": req.params.Name })
     .then(function (movies) {
       res.json(movies.Genre)
     })
