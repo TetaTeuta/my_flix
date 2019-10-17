@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const uuid = require('uuid');
 const mongoose = require('mongoose');
 const Models = require('./models.js');
-const Movie = Models.Movie;
+const Movies = Models.Movie;
 const Users = Models.User;
 const cors = require('cors');
 const passport = require('passport');
@@ -83,7 +83,7 @@ app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), func
 
 // Gets the movies with same genere by genre name
 app.get("/genre/:Name", passport.authenticate('jwt', { session: false }), function (req, res) {
-  Movies.findOne({ "Genre.Name": req.params.Name })
+  Movie.findOne({ "Genre.Name": req.params.Name })
     .then(function (movies) {
       res.json(movies.Genre)
     })
