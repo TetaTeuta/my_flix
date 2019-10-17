@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const uuid = require('uuid');
 const mongoose = require('mongoose');
 const Models = require('./models.js');
-const Movies = Models.Movie;
+const Movie = Models.Movie;
 const Users = Models.User;
 const cors = require('cors');
 const passport = require('passport');
@@ -57,7 +57,7 @@ app.get('/', function (req, res) {
 //get all movies
 app.get('/movies', function (req, res) {
 
-  Movies.find()
+  Movie.find()
     .then(function (movies) {
       res.status(201).json(movies)
     })
