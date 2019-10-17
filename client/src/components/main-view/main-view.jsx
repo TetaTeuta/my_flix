@@ -18,7 +18,7 @@ export class MainView extends React.Component {
     componentDidMount() {
         // let url_root = 'http://localhost:3000'
         let url_root = 'https://my-flix-teuta.herokuapp.com'
-        axios.get('${url_root}/movies')
+        axios.get(`${url_root}/movies`)
             .then(response => {
                 this.setState({
                     movies: response.data
