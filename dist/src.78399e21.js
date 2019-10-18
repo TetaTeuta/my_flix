@@ -33744,10 +33744,10 @@ function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           movie = _this$props.movie,
-          _onClick = _this$props.onClick;
+          onMovieClick = _this$props.onMovieClick;
       return _react.default.createElement("div", {
         onClick: function onClick() {
-          return _onClick(movie);
+          return onMovieClick(movie);
         },
         className: "movie-card"
       }, movie.Title);
@@ -33806,25 +33806,17 @@ function (_React$Component) {
   _createClass(MovieView, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var movie = this.props.movie;
       if (!movie) return null;
       return _react.default.createElement("div", {
         className: "movie-view"
       }, _react.default.createElement("button", {
         className: "back-button",
-        onClick: function (_onClick) {
-          function onClick() {
-            return _onClick.apply(this, arguments);
-          }
-
-          onClick.toString = function () {
-            return _onClick.toString();
-          };
-
-          return onClick;
-        }(function () {
-          return onClick();
-        })
+        onClick: function onClick() {
+          return _this2.props.movieClick(null);
+        }
       }, "Back"), _react.default.createElement("div", {
         className: "movie-title"
       }, _react.default.createElement("div", {
@@ -33907,6 +33899,13 @@ function (_React$Component) {
     _classCallCheck(this, MainView);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MainView).call(this));
+
+    _this.onMovieClick = function (movie) {
+      _this.setState({
+        selectedMovie: movie
+      });
+    };
+
     _this.state = {
       movies: null,
       selectedMovie: null
@@ -33922,19 +33921,12 @@ function (_React$Component) {
       // let url_root = 'http://localhost:3000'
       var url_root = 'https://my-flix-teuta.herokuapp.com';
 
-      _axios.default.get('${url_root}/movies').then(function (response) {
+      _axios.default.get("".concat(url_root, "/movies")).then(function (response) {
         _this2.setState({
           movies: response.data
         });
       }).catch(function (err) {
         console.log(err);
-      });
-    }
-  }, {
-    key: "onMovieClick",
-    value: function onMovieClick(movie) {
-      this.setState({
-        selectedMovie: movie
       });
     }
   }, {
@@ -33952,14 +33944,13 @@ function (_React$Component) {
       return _react.default.createElement("div", {
         className: "main-view"
       }, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
-        movie: selectedMovie
+        movie: selectedMovie,
+        movieClick: this.onMovieClick
       }) : movies.map(function (movie) {
         return _react.default.createElement(_movieCard.MovieCard, {
           key: movie._id,
           movie: movie,
-          onClick: function onClick(movie) {
-            return _this3.onMovieClick(movie);
-          }
+          onMovieClick: _this3.onMovieClick
         });
       }));
     }
@@ -34127,7 +34118,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50233" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53561" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

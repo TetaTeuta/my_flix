@@ -17,7 +17,7 @@ export class MovieView extends React.Component {
             <div className="movie-view">
                 <button
                     className="back-button"
-                    onClick={() => this.onClick()}
+                    onClick={() => this.props.movieClick(null)}
                 >Back</button>
                 <div className="movie-title">
                     <div className="label">Title</div>
