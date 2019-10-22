@@ -6,6 +6,7 @@ import { MainView } from './components/main-view/main-view';
 // Import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
 
+
 // Main component (will eventually use all the others)
 class MyFlixApplication extends React.Component {   //this tells that class will be a react component 
     render() {

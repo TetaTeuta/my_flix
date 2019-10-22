@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class MovieView extends React.Component {
 
@@ -14,31 +15,44 @@ export class MovieView extends React.Component {
         if (!movie) return null;
 
         return (
-            <div className="movie-view">
-                <button
-                    className="back-button"
-                    onClick={() => this.props.movieClick(null)}
-                >Back</button>
-                <div className="movie-title">
-                    <div className="label">Title</div>
-                    <div className="value">{movie.Title}</div>
-                </div>
+            <div className="movie-view" style={{ width: '20rem', margin: '10%' }}>
+                <h1 className="value">{movie.Title}</h1>
                 <div className="movie-description">
-                    <div className="label">Description</div>
+
                     <div className="value">{movie.Description}</div>
                 </div>
                 <img className="movie-poster" src={movie.ImagePath} />
                 <div className="movie-genre">
-                    <div className="label">Genre</div>
+                    <h4 className="label">Genre:</h4>
                     <div className="value">{movie.Genre.Name}</div>
                 </div>
                 <div className="movie-director">
-                    <div className="label">Director</div>
+                    <h4 className="label">Director:</h4>
                     <div className="value">{movie.Director.Name}</div>
+
                 </div>
-            </div>
+                <button className="submit-button, btn-sm" type="button"
+                    onClick={() => this.props.movieClick(null)}
+                >Back</button>
+            </div >
 
 
         );
     }
 }
+
+MovieView.propTypes = {
+    movie: PropTypes.shape({
+        Title: PropTypes.string,
+        ImageUrl: PropTypes.string,
+        Description: PropTypes.string,
+        Genre: PropTypes.exact({
+            _id: PropTypes.string,
+            Name: PropTypes.string,
+            Description: PropTypes.string
+        }),
+        Director: PropTypes.shape({
+            Name: PropTypes.string
+        })
+    }).isRequired
+};
