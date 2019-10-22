@@ -17,8 +17,10 @@ export function LoginView(props) {
     };
 
     return (
+
         <Row className="justify-content-center">
             <Col xs={11} sm={8} md={6} className="form-container">
+                <img src="images/logo.jpg" />
                 <Form className="login-form, col-6" style={{ width: '20rem', margin: '10%' }}>
                     <Form.Label>
                         Username:
