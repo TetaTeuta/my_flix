@@ -3,22 +3,12 @@ body {
   font-family: "Ruda", sans-serif;
 }
 
-.login-form {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
-  height: 100%;
-}
-
 .submit-button,
 .btn-sm {
   color: black;
-  width: 100%;
   max-width: 100px;
   border-radius: 10px;
   padding: 5px;
-  margin-left: 30%;
   height: 100%;
 }
 
