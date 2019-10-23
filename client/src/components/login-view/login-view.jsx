@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Logo from './logo.jpg';
 
 export function LoginView(props) {
     const [username, setUsername] = useState('');
@@ -20,7 +21,7 @@ export function LoginView(props) {
 
         <Row className="justify-content-center">
             <Col xs={11} sm={8} md={6} className="form-container">
-                <img src="images/logo.jpg" />
+                <img className="logo" src={Logo} alt="website logo" />
                 <Form className="login-form, col-6" style={{ width: '20rem', margin: '10%' }}>
                     <Form.Label>
                         Username:
@@ -30,7 +31,7 @@ export function LoginView(props) {
                         Password:
                       <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
                     </Form.Label>
-                    <button className="submit-button, btn-sm" type="button" style={{ width: '20rem', margin: '10%' }} onClick={handleSubmit}>Submit</button>
+                    <button className="submit-button, btn-sm" type="button" style={{ width: '20rem', margin: '10%', float:  }} onClick={handleSubmit}>Submit</button>
                 </Form>
             </Col>
         </Row>

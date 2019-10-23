@@ -12,15 +12,15 @@ import Col from 'react-bootstrap/Col';
 
 export class MovieCard extends React.Component {
     render() {
-        const { movie, onClick } = this.props;
+        const { movie, onMovieClick } = this.props;
 
         return (
             <Card className="mb-1 mb-sm-2" style={{ width: '16rem', marginLeft: '30%' }}>
                 <Card.Img variant="top" src={movie.ImagePath} />
                 <Card.Body>
-                    <Card.Title style={{ margin: '10%' }}>{movie.Title}</Card.Title>
-                    <Card.Text className="mb-1 mb-sm-2" style={{ minWidth: '12rem' }}>{movie.Description}</Card.Text>
-                    <Button style={{ width: '20rem', margin: '10%' }} onClick={() => onClick(movie)} variant="link">Open</Button>
+                    <Card.Title className="text-md-center" style={{ margin: '10%' }}>{movie.Title}</Card.Title>
+                    <Card.Text className="text-md-center" className="mb-1 mb-sm-2" className="text-md-center" style={{ minWidth: '12rem' }}>{movie.Description}</Card.Text>
+                    <Button style={{ width: '20rem', margin: '10%' }} onClick={() => onMovieClick(movie)} variant="link">Open</Button>
                 </Card.Body>
             </Card>
         );

@@ -21,8 +21,8 @@ export class MovieView extends React.Component {
 
         return (
             <div className="movie-view" style={{ width: '20rem', margin: '10%' }}>
-                <h1 className="value">{movie.Title}</h1>
-                <div className="movie-description">
+                <h1 className="value"> {movie.Title} </h1>
+                <div className="movie-description" >
 
                     <div className="value">{movie.Description}</div>
                 </div>
@@ -31,13 +31,13 @@ export class MovieView extends React.Component {
                     <h4 className="label">Genre:</h4>
                     <div className="value">{movie.Genre.Name}</div>
                 </div>
-                <div className="movie-director">
+                <div className="movie-director" >
                     <h4 className="label">Director:</h4>
                     <div className="value">{movie.Director.Name}</div>
 
                 </div>
                 <button className="submit-button, btn-sm" type="button"
-                    onClick={() => this.props.movieClick(null)}
+                    onClick={() => this.props.onMovieClick(null)}
                 >Back</button>
             </div >
 

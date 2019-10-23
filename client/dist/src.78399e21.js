@@ -36114,7 +36114,9 @@ var Row = _react.default.forwardRef(function (props, ref) {
 Row.defaultProps = defaultProps;
 var _default = Row;
 exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"components/login-view/logo.jpg":[function(require,module,exports) {
+module.exports = "/logo.ef9d3344.jpg";
+},{}],"components/login-view/login-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36135,6 +36137,8 @@ var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
 
 var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
+
+var _logo = _interopRequireDefault(require("./logo.jpg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36175,7 +36179,9 @@ function LoginView(props) {
     md: 6,
     className: "form-container"
   }, _react.default.createElement("img", {
-    src: "images/logo.jpg"
+    className: "logo",
+    src: _logo.default,
+    alt: "website logo"
   }), _react.default.createElement(_Form.default, {
     className: "login-form, col-6",
     style: {
@@ -36208,7 +36214,7 @@ function LoginView(props) {
 LoginView.propTypes = {
   onLoggedIn: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js"}],"components/movie-card/movie-card.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","./logo.jpg":"components/login-view/logo.jpg"}],"components/movie-card/movie-card.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36233,6 +36239,8 @@ var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -36265,9 +36273,11 @@ function (_React$Component) {
   _createClass(MovieCard, [{
     key: "render",
     value: function render() {
+      var _React$createElement;
+
       var _this$props = this.props,
           movie = _this$props.movie,
-          _onClick = _this$props.onClick;
+          onMovieClick = _this$props.onMovieClick;
       return _react.default.createElement(_Card.default, {
         className: "mb-1 mb-sm-2",
         style: {
@@ -36278,21 +36288,21 @@ function (_React$Component) {
         variant: "top",
         src: movie.ImagePath
       }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, {
+        className: "text-md-center",
         style: {
           margin: '10%'
         }
-      }, movie.Title), _react.default.createElement(_Card.default.Text, {
-        className: "mb-1 mb-sm-2",
-        style: {
-          minWidth: '12rem'
-        }
-      }, movie.Description), _react.default.createElement(_Button.default, {
+      }, movie.Title), _react.default.createElement(_Card.default.Text, (_React$createElement = {
+        className: "text-md-center"
+      }, _defineProperty(_React$createElement, "className", "mb-1 mb-sm-2"), _defineProperty(_React$createElement, "className", "text-md-center"), _defineProperty(_React$createElement, "style", {
+        minWidth: '12rem'
+      }), _React$createElement), movie.Description), _react.default.createElement(_Button.default, {
         style: {
           width: '20rem',
           margin: '10%'
         },
         onClick: function onClick() {
-          return _onClick(movie);
+          return onMovieClick(movie);
         },
         variant: "link"
       }, "Open")));
@@ -36381,7 +36391,7 @@ function (_React$Component) {
         }
       }, _react.default.createElement("h1", {
         className: "value"
-      }, movie.Title), _react.default.createElement("div", {
+      }, " ", movie.Title, " "), _react.default.createElement("div", {
         className: "movie-description"
       }, _react.default.createElement("div", {
         className: "value"
@@ -36404,7 +36414,7 @@ function (_React$Component) {
         className: "submit-button, btn-sm",
         type: "button",
         onClick: function onClick() {
-          return _this2.props.movieClick(null);
+          return _this2.props.onMovieClick(null);
         }
       }, "Back"));
     }
@@ -36635,14 +36645,13 @@ function (_React$Component) {
       return _react.default.createElement("div", {
         className: "main-view"
       }, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
-        movie: selectedMovie
+        movie: selectedMovie,
+        onMovieClick: this.onMovieClick
       }) : movies.map(function (movie) {
         return _react.default.createElement(_movieCard.MovieCard, {
           key: movie._id,
           movie: movie,
-          onClick: function onClick(movie) {
-            return _this3.onMovieClick(movie);
-          }
+          onMovieClick: _this3.onMovieClick
         });
       }));
     }
