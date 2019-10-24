@@ -13,7 +13,7 @@ const { check, validationResult } = require('express-validator');
 
 const app = express();
 
-// mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true}, function(){
+// mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true }, function () {
 //   console.log('mongodb connected')
 // });
 
@@ -60,6 +60,18 @@ app.get('/movies', function (req, res) {
   Movies.find()
     .then(function (movies) {
       res.status(200).json(movies)
+    })
+    .catch(function (err) {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
+});
+
+app.get('/users', function (req, res) {
+
+  Users.find()
+    .then(function (users) {
+      res.status(200).json(users)
     })
     .catch(function (err) {
       console.error(err);
@@ -138,8 +150,7 @@ app.post("/movies", passport.authenticate('jwt', { session: false }), (req, res)
 app.post('/users', [check('Username', 'Username is required').isLength({ min: 5 }),
 check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
 check('Password', 'Password is required').not().isEmpty(),
-check('Email', 'Email does not appear to be valid').isEmail(),
-check('Birthday', 'Date is not in valid format').isEmpty()], (req, res) => {
+check('Email', 'Email does not appear to be valid').isEmail()], (req, res) => {
 
   // check the validation object for errors
   var errors = validationResult(req);
