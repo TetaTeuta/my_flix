@@ -13,7 +13,7 @@ const { check, validationResult } = require('express-validator');
 
 const app = express();
 
-// mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true }, function () {
+// mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true}, function(){
 //   console.log('mongodb connected')
 // });
 
@@ -66,18 +66,6 @@ app.get('/movies', function (req, res) {
       res.status(500).send("Error: " + err);
     });
 });
-
-// app.get('/users', function (req, res) {
-
-//   Users.find()
-//     .then(function (users) {
-//       res.status(200).json(users)           //just for testing purposes 
-//     })
-//     .catch(function (err) {
-//       console.error(err);
-//       res.status(500).send("Error: " + err);
-//     });
-// });
 
 
 //get movie by title
@@ -284,4 +272,3 @@ var port = process.env.PORT || 3000;
 app.listen(port, "0.0.0.0", function () {
   console.log("Listening on all ports");
 });
-
