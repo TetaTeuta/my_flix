@@ -67,17 +67,17 @@ app.get('/movies', function (req, res) {
     });
 });
 
-app.get('/users', function (req, res) {
+// app.get('/users', function (req, res) {
 
-  Users.find()
-    .then(function (users) {
-      res.status(200).json(users)           //just for testing purposes 
-    })
-    .catch(function (err) {
-      console.error(err);
-      res.status(500).send("Error: " + err);
-    });
-});
+//   Users.find()
+//     .then(function (users) {
+//       res.status(200).json(users)           //just for testing purposes 
+//     })
+//     .catch(function (err) {
+//       console.error(err);
+//       res.status(500).send("Error: " + err);
+//     });
+// });
 
 
 //get movie by title
