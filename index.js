@@ -71,7 +71,7 @@ app.get('/users', function (req, res) {
 
   Users.find()
     .then(function (users) {
-      res.status(200).json(users)
+      res.status(200).json(users)           //just for testing purposes 
     })
     .catch(function (err) {
       console.error(err);
