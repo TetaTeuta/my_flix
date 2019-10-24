@@ -1,5 +1,24 @@
-.my-flix {
-  color: steelblue;
+body {
+  background-color: #C0C0C0;
+  font-family: "Ruda", sans-serif;
+}
+
+.submit-button,
+.btn-sm {
+  color: black;
+  max-width: 100px;
+  border-radius: 10px;
+  padding: 5px;
+  height: 100%;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 60px;
+  padding: 5px;
+  align-items: center;
+  margin-left: 140px;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Logo from './logo.jpg';
+import axios from 'axios';
 
 export function LoginView(props) {
     const [username, setUsername] = useState('');
@@ -11,8 +12,18 @@ export function LoginView(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(username, password);
-        props.onLoggedIn(username);
+        /* Send a request to the server for authentication */
+        axios.post('https://my-flix-teuta.herokuapp.com/login', {
+            Username: username,
+            Password: password
+        })
+            .then(response => {
+                const data = response.data;
+                props.onLoggedIn(data);
+            })
+            .catch(e => {
+                console.log('no such user')
+            });
     };
 
     return (
