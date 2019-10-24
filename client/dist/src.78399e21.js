@@ -36632,9 +36632,27 @@ function (_React$Component) {
       this.getMovies(authData.token);
     }
   }, {
+    key: "getMovies",
+    value: function getMovies(token) {
+      var _this3 = this;
+
+      _axios.default.get('https://my-flix-teuta.herokuapp.com/movies', {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        // Assign the result to the state
+        _this3.setState({
+          movies: response.data
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var _this$state = this.state,
           movies = _this$state.movies,
@@ -36646,7 +36664,7 @@ function (_React$Component) {
       }, "Loading...");
       if (!user) return _react.default.createElement(_loginView.LoginView, {
         onLoggedIn: function onLoggedIn(user) {
-          return _this3.onLoggedIn(user);
+          return _this4.onLoggedIn(user);
         }
       }); // Before the movies have been loaded
 
@@ -36662,7 +36680,7 @@ function (_React$Component) {
         return _react.default.createElement(_movieCard.MovieCard, {
           key: movie._id,
           movie: movie,
-          onMovieClick: _this3.onMovieClick
+          onMovieClick: _this4.onMovieClick
         });
       }));
     }
