@@ -10,15 +10,20 @@ const cors = require('cors');
 const passport = require('passport');
 require('./passport');
 const { check, validationResult } = require('express-validator');
+
 const app = express();
+
 // mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true}, function(){
 //   console.log('mongodb connected')
 // });
+
 mongoose.connect(
   'mongodb+srv://Teveta100:Motori2812@myflixdb-tr84f.mongodb.net/myFlixDB?retryWrites=true&w=majority',
   { useNewUrlParser: true }
 );
+
 var allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'https://my-flix-teuta.herokuapp.com', 'http://localhost:1234'];
+
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
@@ -29,9 +34,13 @@ app.use(cors({
     return callback(null, true);
   }
 }));
+
 app.use(bodyParser.json());
+
 //passport authorization in auth.js file
 var auth = require('./auth')(app);
+
+
 app.use(morgan('common'));
 app.use('/documentation.html', express.static(__dirname + '/public'));
 app.use(function (err, req, res, next) {
@@ -39,10 +48,12 @@ app.use(function (err, req, res, next) {
   res.status(500).send('Something broke!');
   next();
 });
+
 // GET requests
 app.get('/', function (req, res) {
   res.send('Welcome to my movie app!')
 });
+
 //get all movies
 app.get('/movies', function (req, res) {
 
@@ -55,6 +66,8 @@ app.get('/movies', function (req, res) {
       res.status(500).send("Error: " + err);
     });
 });
+
+
 //get movie by title
 app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), function (req, res) {
   Movies.findOne({ Title: req.params.Title })
@@ -66,6 +79,8 @@ app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), func
       res.status(500).send("Error: " + err);
     });
 });
+
+
 // Gets the movies with same genere by genre name
 app.get("/genre/:Name", passport.authenticate('jwt', { session: false }), function (req, res) {
   Movies.findOne({ "Genre.Name": req.params.Name })
@@ -77,6 +92,8 @@ app.get("/genre/:Name", passport.authenticate('jwt', { session: false }), functi
       res.status(500).send("Error: " + err);
     });
 });
+
+
 // Gets the movies from single director by name
 app.get("/directors/:Name", passport.authenticate('jwt', { session: false }), function (req, res) {
   Movies.findOne({ "Director.Name": req.params.Name })
@@ -88,6 +105,7 @@ app.get("/directors/:Name", passport.authenticate('jwt', { session: false }), fu
       res.status(500).send("Error: " + err);
     });
 });
+
 // Get a user by username
 app.get('/users/:Username', function (req, res) {
   Users.find({ Username: req.params.Username })
@@ -99,10 +117,13 @@ app.get('/users/:Username', function (req, res) {
       res.status(500).send("Error: " + err);
     });
 });
+
 //POST
+
 // Adds data for a new movie to list of movies
 app.post("/movies", passport.authenticate('jwt', { session: false }), (req, res) => {
   let newMovie = req.body;   //req.body holds parameters that are sent up from the client as part of a POST request
+
   if (!newMovie.name) {
     const message = "Missing name in request body";
     res.status(400).send(message);
@@ -112,13 +133,16 @@ app.post("/movies", passport.authenticate('jwt', { session: false }), (req, res)
     res.status(201).send(newMovie);
   }
 });
+
 //creating new user
 app.post('/users', [check('Username', 'Username is required').isLength({ min: 5 }),
 check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
 check('Password', 'Password is required').not().isEmpty(),
 check('Email', 'Email does not appear to be valid').isEmail()], (req, res) => {
+
   // check the validation object for errors
   var errors = validationResult(req);
+
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   }
@@ -147,6 +171,7 @@ check('Email', 'Email does not appear to be valid').isEmail()], (req, res) => {
       res.status(500).send("Error: " + error);
     });
 });
+
 //Allow users to add a movie to their list of favorites
 app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), function (req, res) {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
@@ -162,20 +187,28 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
       }
     })
 });
+
+
 //PUT
+
 //update users info by username
 app.put('/users/:Username', passport.authenticate('jwt', { session: false }), [
+
   check('Username').isAlphanumeric(),
   check('Password').isLength({ min: 5 }),
   check('Email').normalizeEmail().isEmail()
 ], (req, res) => {
   // check validation object for errors
   const errors = validationResult(req);
+
   if (!errors.isEmpty) {
     return res.status(422).json({ errors: errors.array });
   }
+
+
   var hashedPassword = Users.hashPassword(req.body.Password
   );
+
   Users.findOneAndUpdate({
     Username: req.params.Username
   }, {
@@ -185,6 +218,7 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), [
         Password: hashedPassword,
         Email: req.body.Email,
         Birthday: req.body.Birthday
+
       }
     },
     { new: true }, //This line makes sure that the updated document is returned
@@ -197,7 +231,9 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), [
       }
     })
 });
+
 //DELETE
+
 //deletes the movie from users favourites list 
 app.delete('/favorites/:username/movies/:MovieID', passport.authenticate('jwt', { session: false }), function (req, res) {     //ne radi
   Users.findOneAndRemove({ Favourites: req.params.Title })
@@ -213,6 +249,7 @@ app.delete('/favorites/:username/movies/:MovieID', passport.authenticate('jwt', 
       res.status(500).send("Error: " + err);
     });
 });
+
 //deletes the user from registry 
 app.delete('/users/:username', passport.authenticate('jwt', { session: false }), function (req, res) {
   Users.findOneAndRemove({ Username: req.params.Username })
@@ -228,8 +265,11 @@ app.delete('/users/:username', passport.authenticate('jwt', { session: false }),
       res.status(500).send("Error: " + err);
     });
 });
+
+
 // listen for requests
 var port = process.env.PORT || 3000;
 app.listen(port, "0.0.0.0", function () {
   console.log("Listening on all ports");
 });
+
