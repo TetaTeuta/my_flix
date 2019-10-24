@@ -29,7 +29,7 @@ export function LoginView(props) {
                         Password:
                       <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
                     </Form.Label>
-                    <button className="submit-button, btn-sm" type="button" style={{ width: '20rem', margin: '10%', float:  }} onClick={handleSubmit}>Submit</button>
+                    <button className="submit-button, btn-sm" type="button" style={{ width: '20rem', margin: '10%' }} onClick={handleSubmit}>Submit</button>
                 </Form>
             </Col>
         </Row>
