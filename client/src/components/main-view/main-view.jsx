@@ -20,17 +20,13 @@ export class MainView extends React.Component {
     }
 
     componentDidMount() {
-        // let url_root = 'http://localhost:3000'
-        let url_root = 'https://my-flix-teuta.herokuapp.com'   //good place to instantiate the network request.
-        axios.get(`${url_root}/movies`)
-            .then(response => {
-                this.setState({
-                    movies: response.data
-                });
-            })
-            .catch(err => {
-                console.log(err);
+        let accessToken = localStorage.getItem('token');
+        if (accessToken !== null) {
+            this.setState({
+                user: localStorage.getItem('user')
             });
+            this.getMovies(accessToken);
+        }
     }
 
     onMovieClick = (movie) => {
