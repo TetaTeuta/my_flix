@@ -36597,18 +36597,14 @@ function (_React$Component) {
   _createClass(MainView, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
+      var accessToken = localStorage.getItem('token');
 
-      // let url_root = 'http://localhost:3000'
-      var url_root = 'https://my-flix-teuta.herokuapp.com'; //good place to instantiate the network request.
-
-      _axios.default.get("".concat(url_root, "/movies")).then(function (response) {
-        _this2.setState({
-          movies: response.data
+      if (accessToken !== null) {
+        this.setState({
+          user: localStorage.getItem('user')
         });
-      }).catch(function (err) {
-        console.log(err);
-      });
+        this.getMovies(accessToken);
+      }
     }
   }, {
     key: "onLoggedIn",
@@ -36622,9 +36618,18 @@ function (_React$Component) {
       this.getMovies(authData.token);
     }
   }, {
+    key: "onLoggedOut",
+    value: function onLoggedOut() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      this.setState({
+        user: null
+      });
+    }
+  }, {
     key: "getMovies",
     value: function getMovies(token) {
-      var _this3 = this;
+      var _this2 = this;
 
       _axios.default.get('https://my-flix-teuta.herokuapp.com/movies', {
         headers: {
@@ -36632,7 +36637,7 @@ function (_React$Component) {
         }
       }).then(function (response) {
         // Assign the result to the state
-        _this3.setState({
+        _this2.setState({
           movies: response.data
         });
       }).catch(function (error) {
@@ -36642,7 +36647,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this3 = this;
 
       var _this$state = this.state,
           movies = _this$state.movies,
@@ -36652,7 +36657,7 @@ function (_React$Component) {
 
       if (!user) return _react.default.createElement(_loginView.LoginView, {
         onLoggedIn: function onLoggedIn(user) {
-          return _this4.onLoggedIn(user);
+          return _this3.onLoggedIn(user);
         }
       }); // Before the movies have been loaded
 
@@ -36668,7 +36673,7 @@ function (_React$Component) {
         return _react.default.createElement(_movieCard.MovieCard, {
           key: movie._id,
           movie: movie,
-          onMovieClick: _this4.onMovieClick
+          onMovieClick: _this3.onMovieClick
         });
       }));
     }
