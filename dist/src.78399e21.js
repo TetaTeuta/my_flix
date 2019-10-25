@@ -36648,10 +36648,8 @@ function (_React$Component) {
           movies = _this$state.movies,
           selectedMovie = _this$state.selectedMovie,
           user = _this$state.user; // Loader
+      // if (!movies) return <div className="loader">Loading...</div>;
 
-      if (!movies) return _react.default.createElement("div", {
-        className: "loader"
-      }, "Loading...");
       if (!user) return _react.default.createElement(_loginView.LoginView, {
         onLoggedIn: function onLoggedIn(user) {
           return _this4.onLoggedIn(user);
