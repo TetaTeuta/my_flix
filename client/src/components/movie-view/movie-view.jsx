@@ -26,10 +26,16 @@ export class MovieView extends React.Component {
                 <div className="movie-genre">
                     <h4 className="label">Genre:</h4>
                     <div className="value">{movie.Genre.Name}</div>
+                    <Link to={`/genres/${movie.Genre.Name}`}>
+                        <Button variant="link">More about this genre</Button>
+                    </Link>
                 </div>
                 <div className="movie-director" >
                     <h4 className="label">Director:</h4>
                     <div className="value">{movie.Director.Name}</div>
+                    <Link to={`/directors/${movie.Director.Name}`}>
+                        <Button variant="link">More about director</Button>
+                    </Link>
 
                 </div>
                 <button className="submit-button, btn-sm" type="button"
