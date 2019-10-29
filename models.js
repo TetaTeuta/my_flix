@@ -31,15 +31,15 @@ userSchema.statics.hashPassword = function (password) {
   return bcrypt.hashSync(password, 10);
 };
 
-userSchema.methods.validatePassword = function (password) {
-  console.log(password == this.password)
-  return true;
-};
-
 // userSchema.methods.validatePassword = function (password) {
-//   return bcrypt.compareSync(password, this.Password, console.log(password + "====" + this.Password));
-
+//   console.log(password == this.password)
+//   return true;
 // };
+
+userSchema.methods.validatePassword = function (password) {
+  return bcrypt.compareSync(password, this.Password, console.log(password + "====" + this.Password));
+
+};
 
 
 var Movie = mongoose.model('Movie', movieSchema, 'Movies');  //this creates db.movies somewhere else
