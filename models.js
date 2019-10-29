@@ -28,8 +28,8 @@ var userSchema = mongoose.Schema({
 });
 
 userSchema.statics.hashPassword = function (password) {
-  console.log('got this far')
-  return bcrypt.hashSync(password, 10);
+  return password == this.password;
+  // return bcrypt.hashSync(password, 10);
 };
 
 userSchema.methods.validatePassword = function (password) {
