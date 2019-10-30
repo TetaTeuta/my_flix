@@ -39601,6 +39601,11 @@ function (_React$Component) {
     }
   }, {
     key: "onLoggedIn",
+    // onLoggedIn(user) {
+    //     this.setState({
+    //         user
+    //     });
+    // }
     value: function onLoggedIn(authData) {
       console.log(authData);
       this.setState({
@@ -39645,7 +39650,7 @@ function (_React$Component) {
       var _this$state = this.state,
           movies = _this$state.movies,
           selectedMovie = _this$state.selectedMovie,
-          user = _this$state.user; // Loader
+          user = _this$state.user; // // Loader
       // if (!movies) return <div className="loader">Loading...</div>;
 
       if (!user) return _react.default.createElement(_loginView.LoginView, {
@@ -39861,7 +39866,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50034" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62537" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
