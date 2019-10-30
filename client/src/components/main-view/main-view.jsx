@@ -87,8 +87,8 @@ export class MainView extends React.Component {
     render() {
         const { movies, selectedMovie, user } = this.state;
 
-        // Loader
-        // if (!movies) return <div className="loader">Loading...</div>;
+        // // Loader
+        if (!movies) return <div className="loader">Loading...</div>;
 
         if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
