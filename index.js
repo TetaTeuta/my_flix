@@ -55,9 +55,23 @@ app.get('/', function (req, res) {
 });
 
 //get all movies
-app.get('/movies', function (req, res) {
+app.get('/movies', passport.authenticate('jwt', { session: false }), function (req, res) {
 
   Movies.find()
+    .then(function (movies) {
+      res.status(200).json(movies)
+    })
+    .catch(function (err) {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
+});
+
+//testing purposes
+
+app.get('/users', passport.authenticate('jwt', { session: false }), function (req, res) {
+
+  Users.find()
     .then(function (movies) {
       res.status(200).json(movies)
     })
