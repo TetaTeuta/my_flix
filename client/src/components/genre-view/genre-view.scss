@@ -3,12 +3,7 @@ $secondary-color: #b3374e;
 $text-color: black;
 
 .back-button,
-.btn-sm {
-    text-decoration: none;
-    background-color: antiquewhite;
-    color: $text-color;
-    max-width: 100px;
-    border-radius: 10px;
-    padding: 5px;
-    height: 100%
+.btn-sm,
+.mb-1 mb-sm-2 {
+    margin-left: 30px;
 };

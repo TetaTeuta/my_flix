@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-
 import { Link } from "react-router-dom";
 import { MovieCard } from '../movie-card/movie-card';
 
-import './genre-view.scss';
+import './director-view.scss';
 
-export class GenreView extends React.Component {
+export class DirectorView extends React.Component {
 
     constructor() {
         super();
@@ -18,17 +17,22 @@ export class GenreView extends React.Component {
     }
 
     render() {
-        const { genre } = this.props;
+        const { director } = this.props;
 
-        if (!genre) return null;
+        if (!director) return null;
 
         return (
             <Card className="mb-1 mb-sm-2" style={{ width: '16rem', marginLeft: '30%' }}>
                 <Card.Body>
-                    <Card.Title className="genre-name">{genre.Name}</Card.Title>
+                    <Card.Title className="director-name">{director.Name}</Card.Title>
                     <Card.Text>
+                        Biography: <br />
                         <br />
-                        {genre.Description}
+                        {director.Bio}
+                        <br />
+                        <br />
+                        Birth Year:  {director.Birth}<br />
+                        Death year: {director.Death}
                     </Card.Text>
                     <div className="text-center">
                         <Link to={`/`}>
@@ -42,6 +46,6 @@ export class GenreView extends React.Component {
 
 }
 
-GenreView.propTypes = {
+DirectorView.propTypes = {
     // will add later
 };
