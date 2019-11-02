@@ -1,3 +1,26 @@
+.more-button {
+  max-width: 100px;
+  border-radius: 10px;
+  padding: 5px;
+  height: 100%;
+}
+.more-button {
+  color: black;
+  max-width: 100px;
+  border-radius: 10px;
+  padding: 5px;
+  height: 100%;
+}
+.back-button,
+.btn-sm {
+  text-decoration: none;
+  background-color: antiquewhite;
+  color: black;
+  max-width: 100px;
+  border-radius: 10px;
+  padding: 5px;
+  height: 100%;
+}
 body {
   background-color: #C0C0C0;
   font-family: "Ruda", sans-serif;

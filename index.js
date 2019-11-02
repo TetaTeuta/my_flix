@@ -69,17 +69,17 @@ app.get('/movies', passport.authenticate('jwt', { session: false }), function (r
 
 //testing purposes
 
-app.get('/users', passport.authenticate('jwt', { session: false }), function (req, res) {
+// app.get('/users', passport.authenticate('jwt', { session: false }), function (req, res) {
 
-  Users.find()
-    .then(function (movies) {
-      res.status(200).json(movies)
-    })
-    .catch(function (err) {
-      console.error(err);
-      res.status(500).send("Error: " + err);
-    });
-});
+//   Users.find()
+//     .then(function (movies) {
+//       res.status(200).json(movies)
+//     })
+//     .catch(function (err) {
+//       console.error(err);
+//       res.status(500).send("Error: " + err);
+//     });
+// });
 
 
 //get movie by title

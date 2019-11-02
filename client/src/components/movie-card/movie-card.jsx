@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
+import './movie-card.scss';
+
 import { Link } from "react-router-dom";
 
 // import { Button, Card, Form, FormGroup, Label, Input } from 'reactstrap';
@@ -12,7 +14,7 @@ export class MovieCard extends React.Component {
         const { movie } = this.props;
 
         return (
-            <Card style={{ width: '16rem' }}>
+            <Card className="mb-1 mb-sm-2" style={{ width: '16rem', marginLeft: '30%' }}>
                 <Card.Img variant="top" src={movie.ImagePath} />
                 <Card.Body>
                     <Card.Title>{movie.Title}</Card.Title>
@@ -30,5 +32,5 @@ MovieCard.propTypes = {
     movie: PropTypes.shape({
         Title: PropTypes.string
     }).isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func
 };
