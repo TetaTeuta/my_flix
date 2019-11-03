@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import './director-view.scss';
 
 import { Link } from "react-router-dom";
 import { MovieCard } from '../movie-card/movie-card';
-
-import './director-view.scss';
 
 export class DirectorView extends React.Component {
 

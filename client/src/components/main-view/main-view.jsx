@@ -1,9 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import propTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+
 
 import './main-view.scss';
 
+import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -11,6 +14,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
+import { ProfileView } from '../profile-view/profile-view';
 
 export class MainView extends React.Component {
 
@@ -19,7 +23,10 @@ export class MainView extends React.Component {
 
         this.state = {
             movies: [],
-            user: null
+            user: null,
+            email: '',
+            birthday: '',
+            userInfo: {}
         };
     }
 
@@ -79,9 +86,29 @@ export class MainView extends React.Component {
             });
     }
 
+    getUser(token) {
+        axios
+            .get('https://my-flix-teuta.herokuapp.com/users/', {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            .then(response => {
+                this.props.setLoggedUser(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    updateUser(data) {
+        this.setState({
+            userInfo: data
+        });
+        localStorage.setItem('user', data.Username);
+    }
+
 
     render() {
-        const { movies, selectedMovie, user } = this.state;
+        const { movies, selectedMovie, user, userInfo } = this.state;
 
         // // Loader
         // if (!movies) return <div className="loader">Loading...</div>;
@@ -94,6 +121,14 @@ export class MainView extends React.Component {
         return (
             <Router>
                 <div className="main-view">
+                    <div className="btn-group">
+                        <Link to={`/users/${user}`}>
+                            <Button className="profile-btn" variant="info">
+                                Profile</Button>
+                        </Link>
+                        <Button className="logout" variant="info" onClick={() => this.onLoggedOut()} >
+                            Log out </Button>
+                    </div>
                     <Route exact path="/" render={() => {
                         if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
                         return movies.map(m => <MovieCard key={m._id} movie={m} />)
@@ -110,11 +145,9 @@ export class MainView extends React.Component {
                     <Route path="/genres/:name" render={({ match }) => {
                         if (!movies) return <div className="main-view" />;
                         return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
-
-                    }
-                    } />
-
-                </div>
+                    }} /></div>
+                <Route path="/users/:Username" render={({ match }) => { return <ProfileView userInfo={userInfo} /> }} />
+                <Route path="/update/:Username" render={() => <ProfileUpdate userInfo={userInfo} user={user} token={token} updateUser={data => this.updateUser(data)} />} />
             </Router>
         );
     }

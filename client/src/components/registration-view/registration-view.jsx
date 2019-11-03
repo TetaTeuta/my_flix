@@ -3,8 +3,6 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 export function RegistrationView(props) {
     const [username, setUsername] = useState('');
@@ -33,7 +31,7 @@ export function RegistrationView(props) {
 
     return (
         <Form className="registration-form">
-            <h4>Register to myFlix:</h4>
+            <h4>Register to MyFlix:</h4>
             <Form.Group controlId="formNewUsername">
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="text" placeholder="Your username" value={username} onChange={e => setUsername(e.target.value)} />

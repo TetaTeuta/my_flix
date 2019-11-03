@@ -5,6 +5,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Logo from './logo.jpg';
 import axios from 'axios';
+import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 
 export function LoginView(props) {
     const [username, setUsername] = useState('');
@@ -27,23 +32,26 @@ export function LoginView(props) {
     };
 
     return (
-
-        <Row className="justify-content-center">
-            <Col xs={11} sm={8} md={6} className="form-container">
-                <img className="logo" src={Logo} alt="website logo" />
-                <Form className="login-form, col-6" style={{ width: '20rem', margin: '10%' }}>
-                    <Form.Label>
-                        Username:
+        <Router>
+            <Row className="justify-content-center">
+                <Col xs={11} sm={8} md={6} className="form-container">
+                    <img className="logo" src={Logo} alt="website logo" />
+                    <Form className="login-form, col-6" style={{ width: '20rem', margin: '10%' }}>
+                        <Form.Label>
+                            Username:
                       <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-                    </Form.Label>
-                    <Form.Label>
-                        Password:
+                        </Form.Label>
+                        <Form.Label>
+                            Password:
                       <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-                    </Form.Label>
-                    <button className="login-button, btn-sm" type="button" style={{ width: '20rem', margin: '10%' }} onClick={handleSubmit}>Submit</button>
-                </Form>
-            </Col>
-        </Row>
+                        </Form.Label>
+                        <Link to={`/`}>
+                            <button className="login-button, btn-sm" type="button" style={{ width: '20rem', margin: '10%' }} onClick={handleSubmit}>Log in</button>
+                        </Link>
+                    </Form>
+                </Col>
+            </Row>
+        </Router>
     );
 }
 

@@ -34,6 +34,7 @@ export class GenreView extends React.Component {
                         <Link to={`/`}>
                             <Button className="back-button" variant="info">Back</Button>
                         </Link>
+
                     </div>
                 </Card.Body>
             </Card>
