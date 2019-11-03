@@ -6,7 +6,10 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import './profile-view.scss'
 
+
 import { Link } from "react-router-dom";
+import { ProfileUpdate } from '../profile-view/profile-update';
+
 
 export class ProfileView extends React.Component {
 
@@ -84,11 +87,11 @@ export class ProfileView extends React.Component {
                         <ListGroup.Item>Email: {email}</ListGroup.Item>
                         <ListGroup.Item>Birthday: {birthday && birthday.slice(0, 10)}</ListGroup.Item>
                         <ListGroup.Item>Favourite Movies:
-             <div>
+                          <div>
                                 {favouriteMovies == undefined &&
                                     <div className="value">Nothing has been added!</div>
                                 }
-                                {favouriteMovies == undefined &&
+                                {favouriteMovies != undefined &&
                                     <ul>
                                         {favouriteMovies.map(favoriteMovie =>
                                             (<li key={favoriteMovie}>
@@ -98,9 +101,7 @@ export class ProfileView extends React.Component {
                                                 <Link to={`/movies/${favoriteMovie}`}>
                                                     <Button size="sm" variant="info">Add to favourites</Button>
                                                 </Link>
-                                                <Button variant="secondary" size="sm" onClick={(event) => this.deleteMovieFromFavs(event, favoriteMovie)}>
-                                                    Delete
-                        </Button>
+                                                <Button variant="secondary" size="sm" onClick={(event) => this.deleteMovieFromFavs(event, favoriteMovie)}>Delete</Button>
                                             </li>)
                                         )}
                                     </ul>

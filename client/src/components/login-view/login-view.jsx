@@ -7,6 +7,8 @@ import Logo from './logo.jpg';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
+import { RegistrationView } from '../registration-view/registration-view';
+import Container from 'react-bootstrap/Container';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -32,26 +34,32 @@ export function LoginView(props) {
     };
 
     return (
-        <Router>
-            <Row className="justify-content-center">
-                <Col xs={11} sm={8} md={6} className="form-container">
-                    <img className="logo" src={Logo} alt="website logo" />
-                    <Form className="login-form, col-6" style={{ width: '20rem', margin: '10%' }}>
-                        <Form.Label>
-                            Username:
+        <Container>
+            <Router>
+                <Row className="justify-content-center">
+                    <Col xs={11} sm={8} md={6} className="form-container">
+                        <img className="logo" src={Logo} alt="website logo" />
+                        <Form className="login-form, col-6" style={{ width: '20rem', margin: '10%' }}>
+                            <Form.Label>
+                                Username:
                       <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-                        </Form.Label>
-                        <Form.Label>
-                            Password:
+                            </Form.Label>
+                            <Form.Label>
+                                Password:
                       <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-                        </Form.Label>
-                        <Link to={`/`}>
-                            <button className="login-button, btn-sm" type="button" style={{ width: '20rem', margin: '10%' }} onClick={handleSubmit}>Log in</button>
+                            </Form.Label>
+                            <Link to={`/`}>
+                                <button className="login-button, btn-sm" type="button" style={{ width: '20rem', margin: '10%' }} onClick={handleSubmit}>Log in</button>
+                            </Link>
+                        </Form>
+                        <Link to={`/register`}>
+                        <Button className="btn-register" variant="secondary">Not a member yet?</Button>
                         </Link>
-                    </Form>
-                </Col>
-            </Row>
-        </Router>
+                    </Col>
+                </Row>
+
+            </Router>
+        </Container>
     );
 }
 
