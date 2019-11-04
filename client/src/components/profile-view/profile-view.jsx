@@ -39,6 +39,7 @@ export class ProfileView extends React.Component {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(response => {
+                response.data = response.data[0]
                 this.setState({
                     userData: response.data,
                     username: response.data.Username,
@@ -96,7 +97,7 @@ export class ProfileView extends React.Component {
                                         {favouriteMovies.map(favoriteMovie =>
                                             (<li key={favoriteMovie}>
                                                 <p className="favouriteMovies">
-                                                    {JSON.parse(localStorage.getItem('movies')).find(movie => movie._id === favoriteMovie).Title}
+                                                    {favoriteMovie.Title}
                                                 </p>
                                                 <Link to={`/movies/${favoriteMovie}`}>
                                                     <Button size="sm" variant="info">Add to favourites</Button>
@@ -113,7 +114,7 @@ export class ProfileView extends React.Component {
                         <Link to={`/`}>
                             <Button className="button-back" variant="outline-info">Back</Button>
                         </Link>
-                        <Link to={`/update/:Username`}>
+                        <Link to={`/update/${username}`}>
                             <Button className="button-update" variant="outline-secondary">Update profile</Button>
                         </Link>
                     </div>

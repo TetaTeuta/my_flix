@@ -52,9 +52,7 @@ export function LoginView(props) {
                                 <button className="login-button, btn-sm" type="button" style={{ width: '20rem', margin: '10%' }} onClick={handleSubmit}>Log in</button>
                             </Link>
                         </Form>
-                        <Link to={`/register`}>
-                        <Button className="btn-register" variant="secondary">Not a member yet?</Button>
-                        </Link>
+                        <Button className="btn-register" variant="secondary" onClick={() => window.location.href = "/register"}>Not a member yet?</Button>
                     </Col>
                 </Row>
 

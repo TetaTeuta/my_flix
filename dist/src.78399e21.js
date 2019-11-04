@@ -39306,12 +39306,13 @@ function LoginView(props) {
       margin: '10%'
     },
     onClick: handleSubmit
-  }, "Log in"))), _react.default.createElement(_reactRouterDom.Link, {
-    to: "/register"
-  }, _react.default.createElement(_Button.default, {
+  }, "Log in"))), _react.default.createElement(_Button.default, {
     className: "btn-register",
-    variant: "secondary"
-  }, "Not a member yet?"))))));
+    variant: "secondary",
+    onClick: function onClick() {
+      return window.location.href = "/register";
+    }
+  }, "Not a member yet?")))));
 }
 
 LoginView.propTypes = {
@@ -39675,7 +39676,12 @@ function (_React$Component) {
       }, _react.default.createElement(_Button.default, {
         className: "more-button",
         variant: "link"
-      }, "More about director"))), _react.default.createElement(_reactRouterDom.Link, {
+      }, "More about director"))), _react.default.createElement(_Button.default, {
+        variant: "outline-secondary",
+        onClick: function onClick(event) {
+          return handleSubmit(event);
+        }
+      }, " Add to Favourites "), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         className: "submit-button, btn-sm",
@@ -41236,6 +41242,8 @@ function (_React$Component) {
           Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
+        response.data = response.data[0];
+
         _this2.setState({
           userData: response.data,
           username: response.data.Username,
@@ -41298,9 +41306,7 @@ function (_React$Component) {
           key: favoriteMovie
         }, _react.default.createElement("p", {
           className: "favouriteMovies"
-        }, JSON.parse(localStorage.getItem('movies')).find(function (movie) {
-          return movie._id === favoriteMovie;
-        }).Title), _react.default.createElement(_reactRouterDom.Link, {
+        }, favoriteMovie.Title), _react.default.createElement(_reactRouterDom.Link, {
           to: "/movies/".concat(favoriteMovie)
         }, _react.default.createElement(_Button.default, {
           size: "sm",
@@ -41320,7 +41326,7 @@ function (_React$Component) {
         className: "button-back",
         variant: "outline-info"
       }, "Back")), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/update/:Username"
+        to: "/update/".concat(username)
       }, _react.default.createElement(_Button.default, {
         className: "button-update",
         variant: "outline-secondary"
@@ -41367,6 +41373,8 @@ var _directorView = require("../director-view/director-view");
 var _profileView = require("../profile-view/profile-view");
 
 var _profileUpdate = require("../profile-view/profile-update");
+
+var _registrationView = require("../registration-view/registration-view");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41429,7 +41437,8 @@ function (_React$Component) {
 
       if (accessToken !== null) {
         this.setState({
-          user: localStorage.getItem('user')
+          user: localStorage.getItem('user'),
+          token: accessToken
         });
         this.getMovies(accessToken);
       }
@@ -41439,7 +41448,8 @@ function (_React$Component) {
     value: function onLoggedIn(authData) {
       console.log(authData);
       this.setState({
-        user: authData.user.Username
+        user: authData.user.Username,
+        token: authData.token
       });
       localStorage.setItem('token', authData.token);
       localStorage.setItem('user', authData.user.Username);
@@ -41506,12 +41516,9 @@ function (_React$Component) {
           movies = _this$state.movies,
           selectedMovie = _this$state.selectedMovie,
           user = _this$state.user,
-          userInfo = _this$state.userInfo;
-      if (!user) return _react.default.createElement(_loginView.LoginView, {
-        onLoggedIn: function onLoggedIn(user) {
-          return _this4.onLoggedIn(user);
-        }
-      }); // Before the movies have been loaded
+          userInfo = _this$state.userInfo,
+          token = _this$state.token; // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+      // Before the movies have been loaded
 
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
@@ -41536,6 +41543,21 @@ function (_React$Component) {
         path: "/",
         render: function render() {
           if (!user) return _react.default.createElement(_loginView.LoginView, {
+            onLoggedIn: function onLoggedIn(user) {
+              return _this4.onLoggedIn(user);
+            }
+          });
+          return movies.map(function (m) {
+            return _react.default.createElement(_movieCard.MovieCard, {
+              key: m._id,
+              movie: m
+            });
+          });
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/register",
+        render: function render() {
+          if (!user) return _react.default.createElement(_registrationView.RegistrationView, {
             onLoggedIn: function onLoggedIn(user) {
               return _this4.onLoggedIn(user);
             }
@@ -41613,7 +41635,7 @@ function (_React$Component) {
 exports.MainView = MainView;
 MainView.propTypes = {// will add it later 
 };
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","./main-view.scss":"components/main-view/main-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../login-view/login-view":"components/login-view/login-view.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../genre-view/genre-view":"components/genre-view/genre-view.jsx","../director-view/director-view":"components/director-view/director-view.jsx","../profile-view/profile-view":"components/profile-view/profile-view.jsx","../profile-view/profile-update":"components/profile-view/profile-update.jsx"}],"index.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","./main-view.scss":"components/main-view/main-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../login-view/login-view":"components/login-view/login-view.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../genre-view/genre-view":"components/genre-view/genre-view.jsx","../director-view/director-view":"components/director-view/director-view.jsx","../profile-view/profile-view":"components/profile-view/profile-view.jsx","../profile-view/profile-update":"components/profile-view/profile-update.jsx","../registration-view/registration-view":"components/registration-view/registration-view.jsx"}],"index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);

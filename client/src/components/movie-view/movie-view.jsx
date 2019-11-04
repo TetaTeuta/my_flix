@@ -42,6 +42,7 @@ export class MovieView extends React.Component {
                     </Link>
 
                 </div>
+                <Button variant="outline-secondary" onClick={event => handleSubmit(event)}> Add to Favourites </Button>
                 <Link to={`/`}>
                     <Button className="submit-button, btn-sm" variant="link">Back</Button>
                 </Link>
