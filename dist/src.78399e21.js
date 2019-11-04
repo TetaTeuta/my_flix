@@ -39091,6 +39091,8 @@ var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
+var _reactRouterDom = require("react-router-dom");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -39190,14 +39192,19 @@ function RegistrationView(props) {
     variant: "info",
     type: "submit",
     onClick: handleRegister
-  }, "Register")));
+  }, "Register")), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/"
+  }, _react.default.createElement(_Button.default, {
+    className: "submit-button, btn-sm",
+    variant: "link"
+  }, "Back")));
 }
 
 ;
 RegistrationView.propTypes = {
   onNewUserRegistered: _propTypes.default.func
 };
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39595,6 +39602,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
+var _axios = _interopRequireDefault(require("axios"));
+
 var _reactRouterDom = require("react-router-dom");
 
 require("./movie-view.scss");
@@ -39637,15 +39646,52 @@ function (_React$Component) {
   _createClass(MovieView, [{
     key: "render",
     value: function render() {
-      var movie = this.props.movie;
+      var _this2 = this;
+
+      var _this$props = this.props,
+          movie = _this$props.movie,
+          user = _this$props.user;
       if (!movie) return null;
+
+      function handleSubmit(event) {
+        event.preventDefault();
+
+        _axios.default.post("https://my-flix-teuta.herokuapp.com/users/".concat(localStorage.getItem('user'), "/Favourites/").concat(movie._id), {
+          Username: localStorage.getItem('user')
+        }, {
+          headers: {
+            Authorization: "Bearer ".concat(localStorage.getItem('token'))
+          }
+        }).then(function (response) {
+          console.log(response);
+          alert('Movie has been added to your Favorite List!');
+        }).catch(function (event) {
+          console.log('error adding movie to list');
+          alert('Ooooops... Something went wrong!');
+        });
+      }
+
+      ;
       return _react.default.createElement("div", {
         className: "movie-view",
         style: {
           width: '20rem',
           margin: '10%'
         }
-      }, _react.default.createElement("h1", {
+      }, _react.default.createElement("div", {
+        className: "btn-group"
+      }, _react.default.createElement(_reactRouterDom.Link, {
+        to: "/users/".concat(user)
+      }, _react.default.createElement(_Button.default, {
+        className: "profile-btn",
+        variant: "info"
+      }, "Profile")), _react.default.createElement(_Button.default, {
+        className: "logout",
+        variant: "info",
+        onClick: function onClick() {
+          return _this2.onLoggedOut();
+        }
+      }, "Log out ")), _react.default.createElement("h1", {
         className: "value"
       }, " ", movie.Title, " "), _react.default.createElement("div", {
         className: "movie-description"
@@ -39709,7 +39755,7 @@ MovieView.propTypes = {
     })
   })
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);

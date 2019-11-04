@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 import { Link } from "react-router-dom";
 
@@ -12,15 +13,47 @@ export class MovieView extends React.Component {
         super();
 
         this.state = {};
+
+
     }
 
     render() {
-        const { movie } = this.props;
+        const { movie, user } = this.props;
 
         if (!movie) return null;
 
+        function handleSubmit(event) {
+            event.preventDefault();
+            axios.post(`https://my-flix-teuta.herokuapp.com/users/${localStorage.getItem('user')}/Favourites/${movie._id}`, {
+                Username: localStorage.getItem('user')
+            }, {
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+                })
+                .then(response => {
+                    console.log(response);
+                    alert('Movie has been added to your Favorite List!');
+                })
+                .catch(event => {
+                    console.log('error adding movie to list');
+                    alert('Ooooops... Something went wrong!');
+                });
+        };
+
+
         return (
             <div className="movie-view" style={{ width: '20rem', margin: '10%' }}>
+
+                <div className="btn-group">
+                    <Link to={`/users/${user}`}>
+                        <Button className="profile-btn" variant="info">
+                            Profile</Button>
+                    </Link>
+                    <Button className="logout" variant="info" onClick={() => this.onLoggedOut()} >
+                        Log out </Button>
+                </div>
+
+
+
                 <h1 className="value"> {movie.Title} </h1>
                 <div className="movie-description" >
 

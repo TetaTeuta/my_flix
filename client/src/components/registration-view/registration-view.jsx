@@ -3,6 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from "react-router-dom";
 
 export function RegistrationView(props) {
     const [username, setUsername] = useState('');
@@ -56,6 +57,10 @@ export function RegistrationView(props) {
                     Register
           </Button>
             </div>
+
+            <Link to={`/`}>
+                <Button className="submit-button, btn-sm" variant="link">Back</Button>
+            </Link>
         </Form >
     );
 };
