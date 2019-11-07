@@ -4,6 +4,9 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
 import { Link } from "react-router-dom";
+import Media from 'react-bootstrap/Media';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import './movie-view.scss';
 
@@ -13,8 +16,6 @@ export class MovieView extends React.Component {
         super();
 
         this.state = {};
-
-
     }
 
     render() {
@@ -24,7 +25,7 @@ export class MovieView extends React.Component {
 
         function handleSubmit(event) {
             event.preventDefault();
-            axios.post(`https://my-flix-teuta.herokuapp.com/users/${localStorage.getItem('user')}/Favourites/${movie._id}`, {
+            axios.post(`https://my-flix-teuta.herokuapp.com/users/${localStorage.getItem('user')}/movies/${movie._id}`, {
                 Username: localStorage.getItem('user')
             }, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
@@ -43,42 +44,34 @@ export class MovieView extends React.Component {
         return (
             <div className="movie-view" style={{ width: '20rem', margin: '10%' }}>
 
-                <div className="btn-group">
-                    <Link to={`/users/${user}`}>
-                        <Button className="profile-btn" variant="info">
-                            Profile</Button>
-                    </Link>
-                    <Button className="logout" variant="info" onClick={() => this.onLoggedOut()} >
-                        Log out </Button>
-                </div>
 
+                <Media className="d-flex flex-column flex-md-row align-items-center">
+                    <Media.Body>
+                        <h4 className="value"> {movie.Title} </h4>
+                        <p className="value">{movie.Description}</p>
+                        <div className="movie-genre">
+                            <h4 className="label">Genre:</h4>
+                            <div className="value">{movie.Genre.Name}</div>
+                            <Link to={`/genres/${movie.Genre.Name}`}>
+                                <Button className="more-button" variant="link">More about this genre</Button>
+                            </Link>
+                        </div>
+                        <div className="movie-director" >
+                            <h4 className="label">Director:</h4>
+                            <div className="value">{movie.Director.Name}</div>
+                            <Link to={`/directors/${movie.Director.Name}`}>
+                                <Button className="more-button" variant="link" size="md">More about director</Button>
+                            </Link>
 
+                        </div>
+                        <Button variant="secondary" size="md" style={{ width: '20rem', margin: '5px' }} onClick={event => handleSubmit(event)}> Add to Favourites </Button>
+                        <Link to={`/`}>
+                            <Button variant="secondary" size="md" style={{ width: '20rem', margin: '5px' }}>Back</Button>
+                        </Link>
+                    </Media.Body>
+                    <img className="movie-poster" width={64} height={64} className="ml-3" src={movie.ImagePath} />
+                </Media>
 
-                <h1 className="value"> {movie.Title} </h1>
-                <div className="movie-description" >
-
-                    <div className="value">{movie.Description}</div>
-                </div>
-                <img className="movie-poster" src={movie.ImagePath} />
-                <div className="movie-genre">
-                    <h4 className="label">Genre:</h4>
-                    <div className="value">{movie.Genre.Name}</div>
-                    <Link to={`/genres/${movie.Genre.Name}`}>
-                        <Button className="more-button" variant="link">More about this genre</Button>
-                    </Link>
-                </div>
-                <div className="movie-director" >
-                    <h4 className="label">Director:</h4>
-                    <div className="value">{movie.Director.Name}</div>
-                    <Link to={`/directors/${movie.Director.Name}`}>
-                        <Button className="more-button" variant="link">More about director</Button>
-                    </Link>
-
-                </div>
-                <Button variant="outline-secondary" onClick={event => handleSubmit(event)}> Add to Favourites </Button>
-                <Link to={`/`}>
-                    <Button className="submit-button, btn-sm" variant="link">Back</Button>
-                </Link>
             </div >
         );
     }

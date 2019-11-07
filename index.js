@@ -49,6 +49,7 @@ app.use(function (err, req, res, next) {
   next();
 });
 
+
 // GET requests
 app.get('/', function (req, res) {
   res.send('Welcome to my movie app!')

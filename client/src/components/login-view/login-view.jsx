@@ -12,6 +12,8 @@ import Container from 'react-bootstrap/Container';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import './login-view.scss';
+
 
 export function LoginView(props) {
     const [username, setUsername] = useState('');
@@ -37,9 +39,10 @@ export function LoginView(props) {
         <Container>
             <Router>
                 <Row className="justify-content-center">
+                    <img className="logo" src={Logo} alt="website logo" />
                     <Col xs={11} sm={8} md={6} className="form-container">
-                        <img className="logo" src={Logo} alt="website logo" />
-                        <Form className="login-form, col-6" style={{ width: '20rem', margin: '10%' }}>
+
+                        <Form className="login-form, col-6" >
                             <Form.Label>
                                 Username:
                       <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
@@ -49,15 +52,14 @@ export function LoginView(props) {
                       <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
                             </Form.Label>
                             <Link to={`/`}>
-                                <button className="login-button, btn-sm" type="button" style={{ width: '20rem', margin: '10%' }} onClick={handleSubmit}>Log in</button>
+                                <Button className="login-button" variant="secondary" size="sm" style={{ width: '20rem', margin: '10%' }} onClick={handleSubmit}>Log in</Button>
                             </Link>
                         </Form>
-                        <Button className="btn-register" variant="secondary" onClick={() => window.location.href = "/register"}>Not a member yet?</Button>
                     </Col>
                 </Row>
-
+                <Button className="btn-register" variant="secondary" size="sm" style={{ margin: '30%' }} onClick={() => window.location.href = "/register"}>Not a member yet?</Button>
             </Router>
-        </Container>
+        </Container >
     );
 }
 

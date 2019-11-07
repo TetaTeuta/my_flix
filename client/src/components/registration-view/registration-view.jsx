@@ -26,6 +26,7 @@ export function RegistrationView(props) {
                 window.open('/', '_self');
             })
             .catch(e => {
+                alert('Something is incorrect')
                 console.log('error registering the user')
             });
     };
@@ -36,6 +37,9 @@ export function RegistrationView(props) {
             <Form.Group controlId="formNewUsername">
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="text" placeholder="Your username" value={username} onChange={e => setUsername(e.target.value)} />
+                <Form.Text className="text-muted">
+                    Min 5 characters
+              </Form.Text>
             </Form.Group>
             <Form.Group controlId="formPassword">
                 <Form.Label>Password</Form.Label>
@@ -51,6 +55,9 @@ export function RegistrationView(props) {
             <Form.Group controlId='formBirthday'>
                 <Form.Label>Birthday</Form.Label>
                 <Form.Control type='date' placeholder='MM/DD/YYYY' value={birthday} onChange={e => setBirthday(e.target.value)} />
+                <Form.Text className="text-muted">
+                    Optional
+              </Form.Text>
             </Form.Group>
             <div className="text-center">
                 <Button className="button-register" variant="info" type="submit" onClick={handleRegister} >

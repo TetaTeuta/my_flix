@@ -73,8 +73,6 @@ export class ProfileView extends React.Component {
     }
 
 
-
-
     render() {
         const { username, email, birthday, favouriteMovies } = this.state;
 
@@ -89,9 +87,9 @@ export class ProfileView extends React.Component {
                         <ListGroup.Item>Birthday: {birthday && birthday.slice(0, 10)}</ListGroup.Item>
                         <ListGroup.Item>Favourite Movies:
                           <div>
-                                {favouriteMovies == undefined &&
-                                    <div className="value">Nothing has been added!</div>
-                                }
+                           {favouriteMovies == undefined &&
+                                 <div className="value"></div>
+                                                        }
                                 {favouriteMovies != undefined &&
                                     <ul>
                                         {favouriteMovies.map(favoriteMovie =>

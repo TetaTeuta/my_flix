@@ -3,7 +3,11 @@ import axios from 'axios';
 import propTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import Media from 'react-bootstrap/Media';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
+import { connect } from 'react-redux';
 
 import './main-view.scss';
 
@@ -17,6 +21,11 @@ import { DirectorView } from '../director-view/director-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { ProfileUpdate } from '../profile-view/profile-update';
 import { RegistrationView } from '../registration-view/registration-view';
+import { setMovies } from '../../actions/actions';
+
+
+// import MoviesList from '../movies-list/movies-list';
+
 
 
 export class MainView extends React.Component {
@@ -83,6 +92,7 @@ export class MainView extends React.Component {
             .then(response => {
                 // Assign the result to the state
                 this.setState({ movies: response.data });
+                // this.props.setMovies(response.data);
                 localStorage.setItem('movies', JSON.stringify(response.data));
             })
             .catch(function (error) {
@@ -112,7 +122,8 @@ export class MainView extends React.Component {
 
 
     render() {
-        const { movies, selectedMovie, user, userInfo, token } = this.state;
+
+        const { movies, user, selectedMovie, userInfo, token } = this.state;
 
         // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
@@ -121,44 +132,61 @@ export class MainView extends React.Component {
 
         return (
             <Router>
-                <div className="main-view">
-                    <div className="btn-group">
-                        <Link to={`/users/${user}`}>
-                            <Button className="profile-btn" variant="info">
-                                Profile</Button>
-                        </Link>
-                        <Button className="logout" variant="info" onClick={() => this.onLoggedOut()} >
-                            Log out </Button>
-                    </div>
-                    <Route exact path="/" render={() => {
-                        if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-                        return movies.map(m => <MovieCard key={m._id} movie={m} />)
-                    }
-                    } />
-                    <Route path="/register" render={() => {
-                        if (!user) return <RegistrationView onLoggedIn={user => this.onLoggedIn(user)} />;
-                        return movies.map(m => <MovieCard key={m._id} movie={m} />)
-                    }
-                    } />
-                    <Route path="/movies/:movieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
-                    <Route path="/directors/:name" render={({ match }) => {
-                        if (!movies || !movies.length) return <div className="main-view" />;
-                        return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
-                    }
-                    } />
-                    <Route path="/genres/:name" render={({ match }) => {
-                        if (!movies || !movies.length) return <div className="main-view" />;
-                        return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
-                    }
-                    } />
-                    <Route path="/users/:Username" render={({ match }) => { return <ProfileView userInfo={userInfo} /> }} />
-                    <Route path="/update/:Username" render={() => <ProfileUpdate userInfo={userInfo} user={user} token={token} updateUser={data => this.updateUser(data)} />} />
-
+                <div >
+                    <Link to={`/users/${user}`}>
+                        <Button className="profile-btn" variant="info">
+                            Profile</Button>
+                    </Link>
+                    <Button className="logout" variant="info" onClick={() => this.onLoggedOut()} >
+                        Log out </Button>
                 </div>
+                <Container className="main-view" >
+                    <div className="container-fluid ">
+                        <Row className="mb-3">
+                            <Col sm={4}>
+
+                                <Route exact path="/" render={() => {
+                                    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+                                    return movies.map(m => <MovieCard key={m._id} movie={m} />)
+                                }
+                                } />
+
+                                <Route path="/register" render={() => {
+                                    if (!user) return <RegistrationView onLoggedIn={user => this.onLoggedIn(user)} />;
+                                    return movies.map(m => <MovieCard key={m._id} movie={m} />)
+                                }
+                                } />
+
+
+                                <Route path="/movies/:movieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
+                                <Route path="/directors/:name" render={({ match }) => {
+                                    if (!movies || !movies.length) return <div className="main-view" />;
+                                    return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+                                }
+                                } />
+
+                                <Route path="/genres/:name" render={({ match }) => {
+                                    if (!movies || !movies.length) return <div className="main-view" />;
+                                    return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
+                                }
+                                } />
+                                <Route path="/users/:Username" render={({ match }) => { return <ProfileView userInfo={userInfo} /> }} />
+                                <Route path="/update/:Username" render={() => <ProfileUpdate userInfo={userInfo} user={user} token={token} updateUser={data => this.updateUser(data)} />} />
+                            </Col>
+                        </Row>
+                    </div>
+                </Container>
             </Router>
         );
     }
 }
+
+let mapStateToProps = state => {
+    return { movies: state.movies }
+}
+
+// #4
+export default connect(mapStateToProps, { setMovies })(MainView);
 
 MainView.propTypes = {
     // will add it later 
