@@ -91,8 +91,8 @@ export class MainView extends React.Component {
         })
             .then(response => {
                 // Assign the result to the state
-                this.setState({ movies: response.data });
-                // this.props.setMovies(response.data);
+                // this.setState({ movies: response.data });
+                this.props.setMovies(response.data);
                 localStorage.setItem('movies', JSON.stringify(response.data));
             })
             .catch(function (error) {
@@ -123,7 +123,10 @@ export class MainView extends React.Component {
 
     render() {
 
-        const { movies, user, selectedMovie, userInfo, token } = this.state;
+        // const { movies, user, selectedMovie, userInfo, token } = this.state;
+
+        let { movies } = this.props;
+        let { user } = this.state;
 
         // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 

@@ -60,14 +60,15 @@ export function RegistrationView(props) {
               </Form.Text>
             </Form.Group>
             <div className="text-center">
-                <Button className="button-register" variant="info" type="submit" onClick={handleRegister} >
+                <Button variant="secondary" size="md" style={{ width: '20rem', margin: '5px' }} onClick={handleRegister} >
                     Register
+
           </Button>
+                <Link to={`/`}>
+                    <Button variant="secondary" size="md" style={{ width: '20rem', margin: '5px' }}>Back</Button>
+                </Link>
             </div>
 
-            <Link to={`/`}>
-                <Button className="submit-button, btn-sm" variant="link">Back</Button>
-            </Link>
         </Form >
     );
 };

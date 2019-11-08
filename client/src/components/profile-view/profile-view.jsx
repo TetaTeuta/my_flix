@@ -21,7 +21,7 @@ export class ProfileView extends React.Component {
             email: null,
             birthday: null,
             userData: null,
-            favouriteMovies: []
+            FavoriteMovies: []
         };
     }
 
@@ -46,7 +46,7 @@ export class ProfileView extends React.Component {
                     password: response.data.Password,
                     email: response.data.Email,
                     birthday: response.data.Birthday,
-                    favouriteMovies: response.data.Favourites
+                    FavoriteMovies: response.data.Favourites
                 });
             })
             .catch(function (error) {
@@ -74,7 +74,7 @@ export class ProfileView extends React.Component {
 
 
     render() {
-        const { username, email, birthday, favouriteMovies } = this.state;
+        const { username, email, birthday, FavouriteMovies } = this.state;
 
         return (
             <Card className="profile-view" style={{ width: '32rem' }}>
@@ -87,12 +87,12 @@ export class ProfileView extends React.Component {
                         <ListGroup.Item>Birthday: {birthday && birthday.slice(0, 10)}</ListGroup.Item>
                         <ListGroup.Item>Favourite Movies:
                           <div>
-                           {favouriteMovies == undefined &&
-                                 <div className="value"></div>
-                                                        }
-                                {favouriteMovies != undefined &&
+                                {FavouriteMovies === 0 &&
+                                    <div className="value">Nothing has been added!</div>
+                                }
+                                {FavouriteMovies > 0 &&
                                     <ul>
-                                        {favouriteMovies.map(favoriteMovie =>
+                                        {FavouriteMovies.map(favoriteMovie =>
                                             (<li key={favoriteMovie}>
                                                 <p className="favouriteMovies">
                                                     {favoriteMovie.Title}

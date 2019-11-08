@@ -41573,16 +41573,23 @@ function RegistrationView(props) {
   }, "Optional")), _react.default.createElement("div", {
     className: "text-center"
   }, _react.default.createElement(_Button.default, {
-    className: "button-register",
-    variant: "info",
-    type: "submit",
+    variant: "secondary",
+    size: "md",
+    style: {
+      width: '20rem',
+      margin: '5px'
+    },
     onClick: handleRegister
-  }, "Register")), _react.default.createElement(_reactRouterDom.Link, {
+  }, "Register"), _react.default.createElement(_reactRouterDom.Link, {
     to: "/"
   }, _react.default.createElement(_Button.default, {
-    className: "submit-button, btn-sm",
-    variant: "link"
-  }, "Back")));
+    variant: "secondary",
+    size: "md",
+    style: {
+      width: '20rem',
+      margin: '5px'
+    }
+  }, "Back"))));
 }
 
 ;
@@ -41666,9 +41673,9 @@ function LoginView(props) {
     });
   };
 
-  return _react.default.createElement(_Container.default, null, _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_Row.default, {
+  return _react.default.createElement(_Container.default, {
     className: "justify-content-center"
-  }, _react.default.createElement("img", {
+  }, _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_Row.default, null, _react.default.createElement("img", {
     className: "logo",
     src: _logo.default,
     alt: "website logo"
@@ -41678,7 +41685,7 @@ function LoginView(props) {
     md: 6,
     className: "form-container"
   }, _react.default.createElement(_Form.default, {
-    className: "login-form, col-6"
+    className: "login-form"
   }, _react.default.createElement(_Form.default.Label, null, "Username:", _react.default.createElement("input", {
     type: "text",
     value: username,
@@ -41696,23 +41703,24 @@ function LoginView(props) {
   }, _react.default.createElement(_Button.default, {
     className: "login-button",
     variant: "secondary",
-    size: "sm",
+    size: "md",
     style: {
       width: '20rem',
-      margin: '10%'
+      margin: '5px'
     },
     onClick: handleSubmit
-  }, "Log in"))))), _react.default.createElement(_Button.default, {
+  }, "Log in")), _react.default.createElement(_Button.default, {
     className: "btn-register",
     variant: "secondary",
-    size: "sm",
+    size: "md",
     style: {
-      margin: '30%'
+      width: '20rem',
+      margin: '5px'
     },
     onClick: function onClick() {
       return window.location.href = "/register";
     }
-  }, "Not a member yet?")));
+  }, "Not a member yet?"))))));
 }
 
 LoginView.propTypes = {
@@ -42001,10 +42009,6 @@ var _reactRouterDom = require("react-router-dom");
 
 var _Media = _interopRequireDefault(require("react-bootstrap/Media"));
 
-var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
-
-var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
-
 require("./movie-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -42084,7 +42088,7 @@ function (_React$Component) {
       }, _react.default.createElement(_Media.default.Body, null, _react.default.createElement("h4", {
         className: "value"
       }, " ", movie.Title, " "), _react.default.createElement("p", {
-        className: "value"
+        className: "value, text-center"
       }, movie.Description), _react.default.createElement("div", {
         className: "movie-genre"
       }, _react.default.createElement("h4", {
@@ -42154,7 +42158,7 @@ MovieView.propTypes = {
     })
   })
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Media":"../node_modules/react-bootstrap/esm/Media.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Media":"../node_modules/react-bootstrap/esm/Media.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -43613,7 +43617,7 @@ function (_React$Component) {
       email: null,
       birthday: null,
       userData: null,
-      favouriteMovies: []
+      FavoriteMovies: []
     };
     return _this;
   }
@@ -43648,7 +43652,7 @@ function (_React$Component) {
           password: response.data.Password,
           email: response.data.Email,
           birthday: response.data.Birthday,
-          favouriteMovies: response.data.Favourites
+          FavoriteMovies: response.data.Favourites
         });
       }).catch(function (error) {
         console.log(error);
@@ -43686,7 +43690,7 @@ function (_React$Component) {
           username = _this$state.username,
           email = _this$state.email,
           birthday = _this$state.birthday,
-          favouriteMovies = _this$state.favouriteMovies;
+          FavouriteMovies = _this$state.FavouriteMovies;
       return _react.default.createElement(_Card.default, {
         className: "profile-view",
         style: {
@@ -43697,9 +43701,9 @@ function (_React$Component) {
       }, "My Profile"), _react.default.createElement(_ListGroup.default, {
         className: "list-group-flush",
         variant: "flush"
-      }, _react.default.createElement(_ListGroup.default.Item, null, "Username: ", username), _react.default.createElement(_ListGroup.default.Item, null, "Password:******* "), _react.default.createElement(_ListGroup.default.Item, null, "Email: ", email), _react.default.createElement(_ListGroup.default.Item, null, "Birthday: ", birthday && birthday.slice(0, 10)), _react.default.createElement(_ListGroup.default.Item, null, "Favourite Movies:", _react.default.createElement("div", null, favouriteMovies == undefined && _react.default.createElement("div", {
+      }, _react.default.createElement(_ListGroup.default.Item, null, "Username: ", username), _react.default.createElement(_ListGroup.default.Item, null, "Password:******* "), _react.default.createElement(_ListGroup.default.Item, null, "Email: ", email), _react.default.createElement(_ListGroup.default.Item, null, "Birthday: ", birthday && birthday.slice(0, 10)), _react.default.createElement(_ListGroup.default.Item, null, "Favourite Movies:", _react.default.createElement("div", null, FavouriteMovies === 0 && _react.default.createElement("div", {
         className: "value"
-      }), favouriteMovies != undefined && _react.default.createElement("ul", null, favouriteMovies.map(function (favoriteMovie) {
+      }, "Nothing has been added!"), FavouriteMovies > 0 && _react.default.createElement("ul", null, FavouriteMovies.map(function (favoriteMovie) {
         return _react.default.createElement("li", {
           key: favoriteMovie
         }, _react.default.createElement("p", {
@@ -43911,10 +43915,8 @@ function (_React$Component) {
         }
       }).then(function (response) {
         // Assign the result to the state
-        _this2.setState({
-          movies: response.data
-        }); // this.props.setMovies(response.data);
-
+        // this.setState({ movies: response.data });
+        _this2.props.setMovies(response.data);
 
         localStorage.setItem('movies', JSON.stringify(response.data));
       }).catch(function (error) {
@@ -43949,12 +43951,9 @@ function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
-      var _this$state = this.state,
-          movies = _this$state.movies,
-          user = _this$state.user,
-          selectedMovie = _this$state.selectedMovie,
-          userInfo = _this$state.userInfo,
-          token = _this$state.token; // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+      // const { movies, user, selectedMovie, userInfo, token } = this.state;
+      var movies = this.props.movies;
+      var user = this.state.user; // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
       // Before the movies have been loaded
 
       if (!movies) return _react.default.createElement("div", {

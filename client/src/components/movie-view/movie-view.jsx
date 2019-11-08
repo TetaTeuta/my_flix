@@ -5,8 +5,6 @@ import axios from 'axios';
 
 import { Link } from "react-router-dom";
 import Media from 'react-bootstrap/Media';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 import './movie-view.scss';
 
@@ -16,7 +14,7 @@ export class MovieView extends React.Component {
         super();
 
         this.state = {};
-    }
+    };
 
     render() {
         const { movie, user } = this.props;
@@ -48,7 +46,7 @@ export class MovieView extends React.Component {
                 <Media className="d-flex flex-column flex-md-row align-items-center">
                     <Media.Body>
                         <h4 className="value"> {movie.Title} </h4>
-                        <p className="value">{movie.Description}</p>
+                        <p className="value, text-center">{movie.Description}</p>
                         <div className="movie-genre">
                             <h4 className="label">Genre:</h4>
                             <div className="value">{movie.Genre.Name}</div>

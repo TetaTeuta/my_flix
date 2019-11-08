@@ -36,13 +36,13 @@ export function LoginView(props) {
     };
 
     return (
-        <Container>
+        <Container className="justify-content-center" >
             <Router>
-                <Row className="justify-content-center">
+                <Row >
                     <img className="logo" src={Logo} alt="website logo" />
                     <Col xs={11} sm={8} md={6} className="form-container">
 
-                        <Form className="login-form, col-6" >
+                        <Form className="login-form" >
                             <Form.Label>
                                 Username:
                       <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
@@ -52,12 +52,12 @@ export function LoginView(props) {
                       <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
                             </Form.Label>
                             <Link to={`/`}>
-                                <Button className="login-button" variant="secondary" size="sm" style={{ width: '20rem', margin: '10%' }} onClick={handleSubmit}>Log in</Button>
+                                <Button className="login-button" variant="secondary" size="md" style={{ width: '20rem', margin: '5px' }} onClick={handleSubmit}>Log in</Button>
                             </Link>
+                            <Button className="btn-register" variant="secondary" size="md" style={{ width: '20rem', margin: '5px' }} onClick={() => window.location.href = "/register"}>Not a member yet?</Button>
                         </Form>
                     </Col>
                 </Row>
-                <Button className="btn-register" variant="secondary" size="sm" style={{ margin: '30%' }} onClick={() => window.location.href = "/register"}>Not a member yet?</Button>
             </Router>
         </Container >
     );
