@@ -22,11 +22,12 @@ import { ProfileView } from '../profile-view/profile-view';
 import { ProfileUpdate } from '../profile-view/profile-update';
 import { RegistrationView } from '../registration-view/registration-view';
 import { setMovies } from '../../actions/actions';
+import { useStore } from 'react-redux';
 
 
 // import MoviesList from '../movies-list/movies-list';
 
-
+const store = useStore()
 
 export class MainView extends React.Component {
 
@@ -92,7 +93,8 @@ export class MainView extends React.Component {
             .then(response => {
                 // Assign the result to the state
                 // this.setState({ movies: response.data });
-                this.props.setMovies(response.data);
+                console.log(useStore().getState());
+                // this.props.setMovies(response.data);
                 localStorage.setItem('movies', JSON.stringify(response.data));
             })
             .catch(function (error) {

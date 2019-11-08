@@ -43836,6 +43836,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 // import MoviesList from '../movies-list/movies-list';
+var store = (0, _reactRedux.useStore)();
+
 var MainView =
 /*#__PURE__*/
 function (_React$Component) {
@@ -43907,8 +43909,6 @@ function (_React$Component) {
   }, {
     key: "getMovies",
     value: function getMovies(token) {
-      var _this2 = this;
-
       _axios.default.get('https://my-flix-teuta.herokuapp.com/movies', {
         headers: {
           Authorization: "Bearer ".concat(token)
@@ -43916,7 +43916,7 @@ function (_React$Component) {
       }).then(function (response) {
         // Assign the result to the state
         // this.setState({ movies: response.data });
-        _this2.props.setMovies(response.data);
+        console.log((0, _reactRedux.useStore)().getState()); // this.props.setMovies(response.data);
 
         localStorage.setItem('movies', JSON.stringify(response.data));
       }).catch(function (error) {
@@ -43926,14 +43926,14 @@ function (_React$Component) {
   }, {
     key: "getUser",
     value: function getUser(token) {
-      var _this3 = this;
+      var _this2 = this;
 
       _axios.default.get('https://my-flix-teuta.herokuapp.com/users/', {
         headers: {
           Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
-        _this3.props.setLoggedUser(response.data);
+        _this2.props.setLoggedUser(response.data);
       }).catch(function (error) {
         console.log(error);
       });
@@ -43949,7 +43949,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this3 = this;
 
       // const { movies, user, selectedMovie, userInfo, token } = this.state;
       var movies = this.props.movies;
@@ -43968,7 +43968,7 @@ function (_React$Component) {
         className: "logout",
         variant: "info",
         onClick: function onClick() {
-          return _this4.onLoggedOut();
+          return _this3.onLoggedOut();
         }
       }, "Log out ")), _react.default.createElement(_Container.default, {
         className: "main-view"
@@ -43984,7 +43984,7 @@ function (_React$Component) {
         render: function render() {
           if (!user) return _react.default.createElement(_loginView.LoginView, {
             onLoggedIn: function onLoggedIn(user) {
-              return _this4.onLoggedIn(user);
+              return _this3.onLoggedIn(user);
             }
           });
           return movies.map(function (m) {
@@ -43999,7 +43999,7 @@ function (_React$Component) {
         render: function render() {
           if (!user) return _react.default.createElement(_registrationView.RegistrationView, {
             onLoggedIn: function onLoggedIn(user) {
-              return _this4.onLoggedIn(user);
+              return _this3.onLoggedIn(user);
             }
           });
           return movies.map(function (m) {
@@ -44061,7 +44061,7 @@ function (_React$Component) {
             user: user,
             token: token,
             updateUser: function updateUser(data) {
-              return _this4.updateUser(data);
+              return _this3.updateUser(data);
             }
           });
         }
