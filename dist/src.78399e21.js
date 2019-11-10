@@ -43651,7 +43651,7 @@ function (_React$Component) {
           password: response.data.Password,
           email: response.data.Email,
           birthday: response.data.Birthday,
-          FavoriteMovies: response.data.Favourites
+          FavoriteMovies: response.data.FavoriteMovies
         });
       }).catch(function (error) {
         console.log(error);
@@ -43663,9 +43663,8 @@ function (_React$Component) {
       var _this3 = this;
 
       event.preventDefault();
-      console.log(favoriteMovie);
 
-      _axios.default.delete("https://my-flix-teuta.herokuapp.com/users/".concat(localStorage.getItem('user'), "/Favourites/").concat(favoriteMovie), {
+      _axios.default.delete("https://my-flix-teuta.herokuapp.com/favorites/".concat(localStorage.getItem('user'), "/movies/").concat(favoriteMovie), {
         headers: {
           Authorization: "Bearer ".concat(localStorage.getItem('token'))
         }
@@ -43689,7 +43688,7 @@ function (_React$Component) {
           username = _this$state.username,
           email = _this$state.email,
           birthday = _this$state.birthday,
-          FavouriteMovies = _this$state.FavouriteMovies;
+          FavoriteMovies = _this$state.FavoriteMovies;
       return _react.default.createElement(_Card.default, {
         className: "profile-view",
         style: {
@@ -43700,13 +43699,13 @@ function (_React$Component) {
       }, "My Profile"), _react.default.createElement(_ListGroup.default, {
         className: "list-group-flush",
         variant: "flush"
-      }, _react.default.createElement(_ListGroup.default.Item, null, "Username: ", username), _react.default.createElement(_ListGroup.default.Item, null, "Password:******* "), _react.default.createElement(_ListGroup.default.Item, null, "Email: ", email), _react.default.createElement(_ListGroup.default.Item, null, "Birthday: ", birthday && birthday.slice(0, 10)), _react.default.createElement(_ListGroup.default.Item, null, "Favourite Movies:", _react.default.createElement("div", null, FavouriteMovies === 0 && _react.default.createElement("div", {
+      }, _react.default.createElement(_ListGroup.default.Item, null, "Username: ", username), _react.default.createElement(_ListGroup.default.Item, null, "Password:******* "), _react.default.createElement(_ListGroup.default.Item, null, "Email: ", email), _react.default.createElement(_ListGroup.default.Item, null, "Birthday: ", birthday && birthday.slice(0, 10)), _react.default.createElement(_ListGroup.default.Item, null, "Favourite Movies:", _react.default.createElement("div", null, FavoriteMovies.length === 0 && _react.default.createElement("div", {
         className: "value"
-      }, "Nothing has been added!"), FavouriteMovies > 0 && _react.default.createElement("ul", null, FavouriteMovies.map(function (favoriteMovie) {
+      }, "Nothing has been added!"), FavoriteMovies.length > 0 && _react.default.createElement("ul", null, FavoriteMovies.map(function (favoriteMovie) {
         return _react.default.createElement("li", {
           key: favoriteMovie
         }, _react.default.createElement("p", {
-          className: "favouriteMovies"
+          className: "favoriteMovies"
         }, favoriteMovie.Title), _react.default.createElement(_reactRouterDom.Link, {
           to: "/movies/".concat(favoriteMovie)
         }, _react.default.createElement(_Button.default, {

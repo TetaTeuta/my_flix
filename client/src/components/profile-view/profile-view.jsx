@@ -46,7 +46,7 @@ export class ProfileView extends React.Component {
                     password: response.data.Password,
                     email: response.data.Email,
                     birthday: response.data.Birthday,
-                    FavoriteMovies: response.data.Favourites
+                    FavoriteMovies: response.data.FavoriteMovies
                 });
             })
             .catch(function (error) {
@@ -56,8 +56,7 @@ export class ProfileView extends React.Component {
 
     deleteMovieFromFavs(event, favoriteMovie) {
         event.preventDefault();
-        console.log(favoriteMovie);
-        axios.delete(`https://my-flix-teuta.herokuapp.com/users/${localStorage.getItem('user')}/Favourites/${favoriteMovie}`, {
+        axios.delete(`https://my-flix-teuta.herokuapp.com/favorites/${localStorage.getItem('user')}/movies/${favoriteMovie}`, {
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         })
             .then(response => {
@@ -74,7 +73,7 @@ export class ProfileView extends React.Component {
 
 
     render() {
-        const { username, email, birthday, FavouriteMovies } = this.state;
+        const { username, email, birthday, FavoriteMovies } = this.state;
 
         return (
             <Card className="profile-view" style={{ width: '32rem' }}>
@@ -87,14 +86,14 @@ export class ProfileView extends React.Component {
                         <ListGroup.Item>Birthday: {birthday && birthday.slice(0, 10)}</ListGroup.Item>
                         <ListGroup.Item>Favourite Movies:
                           <div>
-                                {FavouriteMovies === 0 &&
+                                {FavoriteMovies.length === 0 &&
                                     <div className="value">Nothing has been added!</div>
                                 }
-                                {FavouriteMovies > 0 &&
+                                {FavoriteMovies.length > 0 &&
                                     <ul>
-                                        {FavouriteMovies.map(favoriteMovie =>
+                                        {FavoriteMovies.map(favoriteMovie =>
                                             (<li key={favoriteMovie}>
-                                                <p className="favouriteMovies">
+                                                <p className="favoriteMovies">
                                                     {favoriteMovie.Title}
                                                 </p>
                                                 <Link to={`/movies/${favoriteMovie}`}>
