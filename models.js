@@ -42,8 +42,8 @@ userSchema.methods.validatePassword = function (password) {
 };
 
 
-var Movie = mongoose.model('Movie', movieSchema, 'Movies');  //this creates db.movies somewhere else
-var User = mongoose.model('User', userSchema, 'Users');
+var Movie = mongoose.model('Movie', movieSchema, 'Movies');
+var User = mongoose.model('User', userSchema, 'Users');  //the 3rd parm is the actual name
 
 module.exports.Movie = Movie;    //this exports modules
 module.exports.User = User;    //if specify user will create users
