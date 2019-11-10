@@ -254,13 +254,14 @@ app.delete('/favorites/:username/movies/:MovieID', passport.authenticate('jwt', 
 //deletes the user from registry 
 app.delete('/users/:username', passport.authenticate('jwt', { session: false }), function (req, res) {
   Users.findOneAndRemove({ Username: req.params.Username })
-  console.log(user)
+
     .then(function (user) {
-      if (!user) {
-        res.status(400).send(req.params.Username + " was not found");
-      } else {
-        res.status(200).send(req.params.Username + " was deleted.");
-      }
+      console.log(user)
+      // if (!user) {
+      //   res.status(400).send(req.params.Username + " was not found");
+      // } else {
+      //   res.status(200).send(req.params.Username + " was deleted.");
+      // }
     })
     .catch(function (err) {
       console.error(err);
