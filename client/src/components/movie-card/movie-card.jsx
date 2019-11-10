@@ -7,14 +7,15 @@ import './movie-card.scss';
 
 import { Link } from "react-router-dom";
 
+
 // import { Button, Card, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export class MovieCard extends React.Component {
     render() {
-        const { movie } = this.props;
+        const { movie, FavouriteMovies } = this.props;
 
         return (
-            <Card className="mb-1 mb-sm-2" style={{ width: '16rem', marginLeft: '30%' }}>
+            <Card className="mb-3 mb-sm-4" style={{ minWidth: '12rem' }}>
                 <Card.Img variant="top" src={movie.ImagePath} />
                 <Card.Body>
                     <Card.Title>{movie.Title}</Card.Title>

@@ -43,10 +43,10 @@ export class MovieView extends React.Component {
             <div className="movie-view" style={{ width: '20rem', margin: '10%' }}>
 
 
-                <Media className="d-flex flex-column flex-md-row align-items-center">
+                <Media className="d-flex flex-column flex-md-row">
                     <Media.Body>
                         <h4 className="value"> {movie.Title} </h4>
-                        <p className="value, text-center">{movie.Description}</p>
+                        <p className="value">{movie.Description}</p>
                         <div className="movie-genre">
                             <h4 className="label">Genre:</h4>
                             <div className="value">{movie.Genre.Name}</div>
@@ -67,7 +67,7 @@ export class MovieView extends React.Component {
                             <Button variant="secondary" size="md" style={{ width: '20rem', margin: '5px' }}>Back</Button>
                         </Link>
                     </Media.Body>
-                    <img className="movie-poster" width={64} height={64} className="ml-3" src={movie.ImagePath} />
+                    <img className="movie-poster" style={{ maxWidth: '23rem' }} src={movie.ImagePath} />
                 </Media>
 
             </div >

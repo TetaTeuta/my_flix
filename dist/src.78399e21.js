@@ -41956,12 +41956,13 @@ function (_React$Component) {
   _createClass(MovieCard, [{
     key: "render",
     value: function render() {
-      var movie = this.props.movie;
+      var _this$props = this.props,
+          movie = _this$props.movie,
+          FavouriteMovies = _this$props.FavouriteMovies;
       return _react.default.createElement(_Card.default, {
-        className: "mb-1 mb-sm-2",
+        className: "mb-3 mb-sm-4",
         style: {
-          width: '16rem',
-          marginLeft: '30%'
+          minWidth: '12rem'
         }
       }, _react.default.createElement(_Card.default.Img, {
         variant: "top",
@@ -42015,8 +42016,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -42051,8 +42050,6 @@ function (_React$Component) {
   _createClass(MovieView, [{
     key: "render",
     value: function render() {
-      var _React$createElement;
-
       var _this$props = this.props,
           movie = _this$props.movie,
           user = _this$props.user;
@@ -42084,11 +42081,11 @@ function (_React$Component) {
           margin: '10%'
         }
       }, _react.default.createElement(_Media.default, {
-        className: "d-flex flex-column flex-md-row align-items-center"
+        className: "d-flex flex-column flex-md-row"
       }, _react.default.createElement(_Media.default.Body, null, _react.default.createElement("h4", {
         className: "value"
       }, " ", movie.Title, " "), _react.default.createElement("p", {
-        className: "value, text-center"
+        className: "value"
       }, movie.Description), _react.default.createElement("div", {
         className: "movie-genre"
       }, _react.default.createElement("h4", {
@@ -42131,11 +42128,13 @@ function (_React$Component) {
           width: '20rem',
           margin: '5px'
         }
-      }, "Back"))), _react.default.createElement("img", (_React$createElement = {
+      }, "Back"))), _react.default.createElement("img", {
         className: "movie-poster",
-        width: 64,
-        height: 64
-      }, _defineProperty(_React$createElement, "className", "ml-3"), _defineProperty(_React$createElement, "src", movie.ImagePath), _React$createElement))));
+        style: {
+          maxWidth: '23rem'
+        },
+        src: movie.ImagePath
+      })));
     }
   }]);
 

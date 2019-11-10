@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-
 import { Link } from "react-router-dom";
 import { MovieCard } from '../movie-card/movie-card';
+
 
 import './genre-view.scss';
 
@@ -34,7 +34,6 @@ export class GenreView extends React.Component {
                         <Link to={`/`}>
                             <Button className="back-button" variant="info">Back</Button>
                         </Link>
-
                     </div>
                 </Card.Body>
             </Card>

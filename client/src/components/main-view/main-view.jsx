@@ -25,6 +25,7 @@ import { setMovies } from '../../actions/actions';
 import { useStore } from 'react-redux';
 
 
+
 // import MoviesList from '../movies-list/movies-list';
 
 
@@ -180,8 +181,10 @@ export class MainView extends React.Component {
                                 } />
                                 <Route path="/users/:Username" render={({ match }) => { return <ProfileView userInfo={userInfo} /> }} />
                                 <Route path="/update/:Username" render={() => <ProfileUpdate userInfo={userInfo} user={user} token={token} updateUser={data => this.updateUser(data)} />} />
+
                             </Col>
                         </Row>
+
                     </div>
                 </Container>
             </Router>
