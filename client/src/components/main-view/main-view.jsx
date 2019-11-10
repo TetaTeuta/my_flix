@@ -27,12 +27,14 @@ import { useStore } from 'react-redux';
 
 // import MoviesList from '../movies-list/movies-list';
 
-const store = useStore()
+
 
 export class MainView extends React.Component {
 
     constructor() {
         super();
+
+        // const store = useStore()
 
         this.state = {
             movies: [],
@@ -41,6 +43,8 @@ export class MainView extends React.Component {
             birthday: '',
             userInfo: {}
         };
+
+
     }
 
     componentDidMount() {
@@ -92,8 +96,7 @@ export class MainView extends React.Component {
         })
             .then(response => {
                 // Assign the result to the state
-                // this.setState({ movies: response.data });
-                console.log(useStore().getState());
+                this.setState({ movies: response.data });
                 // this.props.setMovies(response.data);
                 localStorage.setItem('movies', JSON.stringify(response.data));
             })
@@ -125,10 +128,10 @@ export class MainView extends React.Component {
 
     render() {
 
-        // const { movies, user, selectedMovie, userInfo, token } = this.state;
+        const { movies, user, selectedMovie, userInfo, token } = this.state;
 
-        let { movies } = this.props;
-        let { user } = this.state;
+        // let { movies } = this.props;
+        // let { user } = this.state;
 
         // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
