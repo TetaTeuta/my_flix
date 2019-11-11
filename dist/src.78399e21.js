@@ -43664,7 +43664,7 @@ function (_React$Component) {
 
       event.preventDefault();
 
-      _axios.default.delete("https://my-flix-teuta.herokuapp.com/favorites/".concat(localStorage.getItem('user'), "/movies/").concat(favoriteMovie), {
+      _axios.default.delete("https://my-flix-teuta.herokuapp.com/users/".concat(localStorage.getItem('user'), "/movies/").concat(favoriteMovie), {
         headers: {
           Authorization: "Bearer ".concat(localStorage.getItem('token'))
         }

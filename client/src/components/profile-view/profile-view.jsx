@@ -56,7 +56,7 @@ export class ProfileView extends React.Component {
 
     deleteMovieFromFavs(event, favoriteMovie) {
         event.preventDefault();
-        axios.delete(`https://my-flix-teuta.herokuapp.com/favorites/${localStorage.getItem('user')}/movies/${favoriteMovie}`, {
+        axios.delete(`https://my-flix-teuta.herokuapp.com/users/${localStorage.getItem('user')}/movies/${favoriteMovie}`, {
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         })
             .then(response => {
