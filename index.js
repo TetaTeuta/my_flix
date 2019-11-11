@@ -237,7 +237,10 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), [
 
 //deletes the movie from users favourites list 
 app.delete('/users/:username/movies/:MovieID', passport.authenticate('jwt', { session: false }), function (req, res) {     //ne radi
-  Users.findOneAndRemove({ FavoriteMovies: req.params.Movies.Title })
+  Users.findOneAndRemove({ Username: req.params.Username }, {
+    $pull: { FavoriteMovies: req.params.MovieID }
+  },
+    { new: true })
     .then(function (favs) {
       if (!favs) {
         res.status(400).send(req.params.Movies.Title + " was not found");
