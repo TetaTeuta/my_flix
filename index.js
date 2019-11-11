@@ -237,12 +237,12 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), [
 
 //deletes the movie from users favourites list 
 app.delete('/favorites/:username/movies/:MovieID', passport.authenticate('jwt', { session: false }), function (req, res) {     //ne radi
-  Users.findOneAndRemove({ FavoriteMovies: req.params.ObjectID })
+  Users.findOneAndRemove({ FavoriteMovies: req.params.FavoriteMovies.ObjectID })
     .then(function (favs) {
       if (!favs) {
-        res.status(400).send(req.params.ObjectID + " was not found");
+        res.status(400).send(req.params.FavoriteMovies + " was not found");
       } else {
-        res.status(200).send(req.params.ObjectID + " was deleted.");
+        res.status(200).send(req.params.FavoriteMovies + " was deleted.");
       }
     })
     .catch(function (err) {
