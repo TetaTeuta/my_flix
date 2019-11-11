@@ -43706,12 +43706,7 @@ function (_React$Component) {
           key: favoriteMovie
         }, _react.default.createElement("p", {
           className: "favoriteMovies"
-        }, favoriteMovie.Title), _react.default.createElement(_reactRouterDom.Link, {
-          to: "/movies/".concat(favoriteMovie)
-        }, _react.default.createElement(_Button.default, {
-          size: "sm",
-          variant: "info"
-        }, "Add to favourites")), _react.default.createElement(_Button.default, {
+        }, favoriteMovie), _react.default.createElement(_Button.default, {
           variant: "secondary",
           size: "sm",
           onClick: function onClick(event) {

@@ -94,11 +94,8 @@ export class ProfileView extends React.Component {
                                         {FavoriteMovies.map(favoriteMovie =>
                                             (<li key={favoriteMovie}>
                                                 <p className="favoriteMovies">
-                                                    {favoriteMovie.Title}
+                                                    {favoriteMovie}
                                                 </p>
-                                                <Link to={`/movies/${favoriteMovie}`}>
-                                                    <Button size="sm" variant="info">Add to favourites</Button>
-                                                </Link>
                                                 <Button variant="secondary" size="sm" onClick={(event) => this.deleteMovieFromFavs(event, favoriteMovie)}>Delete</Button>
                                             </li>)
                                         )}
