@@ -73,7 +73,7 @@ export class ProfileView extends React.Component {
 
 
     render() {
-        const { username, email, birthday, FavoriteMovies } = this.state;
+        const { username, email, birthday, FavoriteMovies, movies } = this.state;
 
         return (
             <Card className="profile-view" style={{ width: '32rem' }}>
@@ -84,7 +84,7 @@ export class ProfileView extends React.Component {
                         <ListGroup.Item>Password:******* </ListGroup.Item>
                         <ListGroup.Item>Email: {email}</ListGroup.Item>
                         <ListGroup.Item>Birthday: {birthday && birthday.slice(0, 10)}</ListGroup.Item>
-                        <ListGroup.Item>Favourite Movies:
+                        <ListGroup.Item>Favorite Movies:
                           <div>
                                 {FavoriteMovies.length === 0 &&
                                     <div className="value">Nothing has been added!</div>

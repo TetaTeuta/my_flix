@@ -31,10 +31,6 @@ userSchema.statics.hashPassword = function (password) {
   return bcrypt.hashSync(password, 10);
 };
 
-// userSchema.methods.validatePassword = function (password) {
-//   console.log(password == this.password)
-//   return true;
-// };
 
 userSchema.methods.validatePassword = function (password) {
   return bcrypt.compareSync(password, this.Password, console.log(password + "====" + this.Password));
@@ -46,7 +42,7 @@ var Movie = mongoose.model('Movie', movieSchema, 'Movies');
 var User = mongoose.model('User', userSchema, 'Users');  //the 3rd parm is the actual name
 
 module.exports.Movie = Movie;    //this exports modules
-module.exports.User = User;    //if specify user will create users
+module.exports.User = User;
 
 
 

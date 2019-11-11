@@ -43688,7 +43688,8 @@ function (_React$Component) {
           username = _this$state.username,
           email = _this$state.email,
           birthday = _this$state.birthday,
-          FavoriteMovies = _this$state.FavoriteMovies;
+          FavoriteMovies = _this$state.FavoriteMovies,
+          movies = _this$state.movies;
       return _react.default.createElement(_Card.default, {
         className: "profile-view",
         style: {
@@ -43699,7 +43700,7 @@ function (_React$Component) {
       }, "My Profile"), _react.default.createElement(_ListGroup.default, {
         className: "list-group-flush",
         variant: "flush"
-      }, _react.default.createElement(_ListGroup.default.Item, null, "Username: ", username), _react.default.createElement(_ListGroup.default.Item, null, "Password:******* "), _react.default.createElement(_ListGroup.default.Item, null, "Email: ", email), _react.default.createElement(_ListGroup.default.Item, null, "Birthday: ", birthday && birthday.slice(0, 10)), _react.default.createElement(_ListGroup.default.Item, null, "Favourite Movies:", _react.default.createElement("div", null, FavoriteMovies.length === 0 && _react.default.createElement("div", {
+      }, _react.default.createElement(_ListGroup.default.Item, null, "Username: ", username), _react.default.createElement(_ListGroup.default.Item, null, "Password:******* "), _react.default.createElement(_ListGroup.default.Item, null, "Email: ", email), _react.default.createElement(_ListGroup.default.Item, null, "Birthday: ", birthday && birthday.slice(0, 10)), _react.default.createElement(_ListGroup.default.Item, null, "Favorite Movies:", _react.default.createElement("div", null, FavoriteMovies.length === 0 && _react.default.createElement("div", {
         className: "value"
       }, "Nothing has been added!"), FavoriteMovies.length > 0 && _react.default.createElement("ul", null, FavoriteMovies.map(function (favoriteMovie) {
         return _react.default.createElement("li", {
