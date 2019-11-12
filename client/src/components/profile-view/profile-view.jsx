@@ -10,7 +10,6 @@ import './profile-view.scss'
 import { Link } from "react-router-dom";
 import { ProfileUpdate } from '../profile-view/profile-update';
 
-
 export class ProfileView extends React.Component {
 
     constructor() {
@@ -24,6 +23,8 @@ export class ProfileView extends React.Component {
             FavoriteMovies: []
         };
     }
+
+
 
     componentDidMount() {
         //authentication
@@ -73,7 +74,8 @@ export class ProfileView extends React.Component {
 
 
     render() {
-        const { username, email, birthday, FavoriteMovies, movies } = this.state;
+        const { username, email, birthday, FavoriteMovies } = this.state;
+        const movies = JSON.parse(localStorage.getItem(movies));
 
         return (
             <Card className="profile-view" style={{ width: '32rem' }}>
@@ -94,7 +96,8 @@ export class ProfileView extends React.Component {
                                         {FavoriteMovies.map(favoriteMovie =>
                                             (<li key={favoriteMovie}>
                                                 <p className="favoriteMovies">
-                                                    {favoriteMovie}
+
+                                                    {JSON.parse(localStorage.getItem(movies)).find(movie => movie._id === favoriteMovie).Title}
                                                 </p>
                                                 <Button variant="secondary" size="sm" onClick={(event) => this.deleteMovieFromFavs(event, favoriteMovie)}>Delete</Button>
                                             </li>)

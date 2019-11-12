@@ -43688,8 +43688,8 @@ function (_React$Component) {
           username = _this$state.username,
           email = _this$state.email,
           birthday = _this$state.birthday,
-          FavoriteMovies = _this$state.FavoriteMovies,
-          movies = _this$state.movies;
+          FavoriteMovies = _this$state.FavoriteMovies;
+      var movies = JSON.parse(localStorage.getItem(movies));
       return _react.default.createElement(_Card.default, {
         className: "profile-view",
         style: {
@@ -43707,7 +43707,9 @@ function (_React$Component) {
           key: favoriteMovie
         }, _react.default.createElement("p", {
           className: "favoriteMovies"
-        }, favoriteMovie), _react.default.createElement(_Button.default, {
+        }, JSON.parse(localStorage.getItem(movies)).find(function (movie) {
+          return movie._id === favoriteMovie;
+        }).Title), _react.default.createElement(_Button.default, {
           variant: "secondary",
           size: "sm",
           onClick: function onClick(event) {
