@@ -237,7 +237,7 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), [
 
 //deletes the movie from users favourites list 
 app.delete('/users/:username/movies/:MovieID', passport.authenticate('jwt', { session: false }), function (req, res) {
-  Users.findOneAndRemove({ Username: req.params.Username }, {
+  Users.findOneAndUpdate({ Username: req.params.Username }, {
     $pull: { FavoriteMovies: req.params.MovieID }
   },
     function (err, updatedUser) {
@@ -252,7 +252,7 @@ app.delete('/users/:username/movies/:MovieID', passport.authenticate('jwt', { se
 
 //deletes the user from registry 
 app.delete('/users/:username', passport.authenticate('jwt', { session: false }), function (req, res) {
-  Users.findOneAndRemove({ Username: req.params.Username })
+  Users.findOneAndUpdate({ Username: req.params.Username })
 
     .then(function (user) {
       console.log(user)
