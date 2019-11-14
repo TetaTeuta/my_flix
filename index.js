@@ -244,7 +244,7 @@ app.delete('/users/:username/movies/:MovieID', passport.authenticate('jwt', { se
         console.error(err);
         res.status(500).send("Error:" + err);
       } else {
-        res.json(updatedUser).send("Deleted")
+        res.json(updatedUser).send("Movie deleted from favs!")
       }
     });
 });
