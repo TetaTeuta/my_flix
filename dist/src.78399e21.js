@@ -41961,6 +41961,7 @@ function (_React$Component) {
           FavouriteMovies = _this$props.FavouriteMovies;
       return _react.default.createElement(_Card.default, {
         className: "mb-3 mb-sm-4",
+        expand: "lg",
         style: {
           minWidth: '12rem'
         }
@@ -43707,7 +43708,9 @@ function (_React$Component) {
           key: favoriteMovie
         }, _react.default.createElement("p", {
           className: "favoriteMovies"
-        }, favoriteMovie), _react.default.createElement(_Button.default, {
+        }, JSON.parse(localStorage.getItem('movies')).find(function (movie) {
+          return movie._id === favoriteMovie;
+        }).Title), _react.default.createElement(_Button.default, {
           variant: "secondary",
           size: "sm",
           onClick: function onClick(event) {

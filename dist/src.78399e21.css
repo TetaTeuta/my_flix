@@ -43,6 +43,7 @@ body {
   border-radius: 10px;
   padding: 5px;
   height: 100%;
+  transform: scale(1.05);
 }
 
 .logo {

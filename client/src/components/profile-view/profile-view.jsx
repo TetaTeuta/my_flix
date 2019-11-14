@@ -96,8 +96,7 @@ export class ProfileView extends React.Component {
                                         {FavoriteMovies.map(favoriteMovie =>
                                             (<li key={favoriteMovie}>
                                                 <p className="favoriteMovies">
-
-                                                    {favoriteMovie}
+                                                    {JSON.parse(localStorage.getItem('movies')).find(movie => movie._id === favoriteMovie).Title}
                                                 </p>
                                                 <Button variant="secondary" size="sm" onClick={(event) => this.deleteMovieFromFavs(event, favoriteMovie)}>Delete</Button>
                                             </li>)

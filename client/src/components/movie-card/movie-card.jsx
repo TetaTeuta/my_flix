@@ -15,7 +15,7 @@ export class MovieCard extends React.Component {
         const { movie, FavouriteMovies } = this.props;
 
         return (
-            <Card className="mb-3 mb-sm-4" style={{ minWidth: '12rem' }}>
+            <Card className="mb-3 mb-sm-4" expand="lg" style={{ minWidth: '12rem' }}>
                 <Card.Img variant="top" src={movie.ImagePath} />
                 <Card.Body>
                     <Card.Title>{movie.Title}</Card.Title>
