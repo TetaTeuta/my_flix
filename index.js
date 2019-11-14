@@ -237,7 +237,7 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), [
 
 //deletes the movie from users favourites list 
 app.delete('/users/:username/movies/:MovieID', passport.authenticate('jwt', { session: false }), function (req, res) {
-  Users.findOneAndUpdate({ Username: req.params.Username },
+  Users.findOneAndRemove({ Username: req.params.Username },
 
     function (err, updatedUser) {
       if (err) {
@@ -251,10 +251,9 @@ app.delete('/users/:username/movies/:MovieID', passport.authenticate('jwt', { se
 
 //deletes the user from registry 
 app.delete('/users/:username', passport.authenticate('jwt', { session: false }), function (req, res) {
-  Users.findOneAndUpdate({ Username: req.params.Username })
+  Users.findOneAndRemove({ Username: req.params.Username })
 
     .then(function (user) {
-      console.log(user)
       if (!user) {
         res.status(400).send(req.params.Username + " was not found");
       } else {
