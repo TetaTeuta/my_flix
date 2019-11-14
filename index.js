@@ -236,18 +236,23 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), [
 //DELETE
 
 //deletes the movie from users favourites list 
-app.delete('/users/:username/movies/:MovieID', passport.authenticate('jwt', { session: false }), function (req, res) {
-  Users.findOneAndRemove({ Username: req.params.Username },
-
-    function (err, updatedUser) {
-      if (err) {
-        console.error(err);
-        res.status(500).send("Error:" + err);
-      } else {
-        res.json(updatedUser).send("Movie deleted from favs!")
+app.delete("/users/:Username/Movies/:MovieID", passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Users.findOneAndUpdate(
+      { Username: req.params.Username },
+      { $pull: { FavoriteMovies: req.params.MovieID } },
+      { new: true }, // This line makes sure that the updated document is returned
+      (error, updatedUser) => {
+        if (error) {
+          console.error(error);
+          res.status(500).send("Error: " + error);
+        } else {
+          res.json(updatedUser);
+        }
       }
-    });
-});
+    );
+  }
+);
 
 //deletes the user from registry 
 app.delete('/users/:Username', function (req, res) {
