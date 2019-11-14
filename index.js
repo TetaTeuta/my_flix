@@ -252,7 +252,7 @@ app.delete('/users/:username/movies/:MovieID', passport.authenticate('jwt', { se
 //deletes the user from registry 
 app.delete('/users/:username', passport.authenticate('jwt', { session: false }), function (req, res) {
   Users.findOneAndRemove({ Username: req.params.Username })
-  console.log(Username)
+  console.log(req.params.Username)
     .then(function (user) {
       if (!user) {
         res.status(400).send(req.params.Username + " was not found");
