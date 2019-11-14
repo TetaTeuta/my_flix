@@ -43707,9 +43707,7 @@ function (_React$Component) {
           key: favoriteMovie
         }, _react.default.createElement("p", {
           className: "favoriteMovies"
-        }, JSON.parse(localStorage.getItem(movies)).find(function (movie) {
-          return movie._id === favoriteMovie;
-        }).Title), _react.default.createElement(_Button.default, {
+        }, favoriteMovie), _react.default.createElement(_Button.default, {
           variant: "secondary",
           size: "sm",
           onClick: function onClick(event) {
