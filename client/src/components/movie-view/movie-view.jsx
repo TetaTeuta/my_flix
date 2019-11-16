@@ -5,6 +5,8 @@ import axios from 'axios';
 
 import { Link } from "react-router-dom";
 import Media from 'react-bootstrap/Media';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import './movie-view.scss';
 
@@ -46,27 +48,40 @@ export class MovieView extends React.Component {
                 <Media className="justify-content-center">
                     <Media left href="#"><img className="movie-poster" style={{ height: '20rem', width: '14rem', marginRight: '5rem' }} src={movie.ImagePath} /></Media>
                     <Media.Body>
-                        <h4 className="value"> {movie.Title} </h4>
-                        <p className="value">{movie.Description}</p>
-                        <div className="movie-genre">
-                            <h4 className="label">Genre:</h4>
-                            <div className="value">{movie.Genre.Name}</div>
-                            <Link to={`/genres/${movie.Genre.Name}`}>
-                                <Button className="more-button" variant="link">More about this genre</Button>
-                            </Link>
-                        </div>
-                        <div className="movie-director" >
-                            <h4 className="label">Director:</h4>
-                            <div className="value">{movie.Director.Name}</div>
-                            <Link to={`/directors/${movie.Director.Name}`}>
-                                <Button className="more-button" variant="link" size="md">More about director</Button>
+                        <div className="container">
+                            <Row>
+                                <h4 className="value"> {movie.Title} </h4>
+                                <p className="value">{movie.Description}</p>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <div className="movie-genre ">
+                                        <h4 className="label">Genre:</h4>
+                                        <div className="value">{movie.Genre.Name}</div>
+                                        <Link to={`/genres/${movie.Genre.Name}`}>
+                                            <Button className="more-button" variant="link">More about this genre</Button>
+                                        </Link>
+                                    </div>
+                                </Col>
+                                <Col>
+
+                                    <div className="movie-director" >
+                                        <h4 className="label">Director:</h4>
+                                        <div className="value">{movie.Director.Name}</div>
+                                        <Link to={`/directors/${movie.Director.Name}`}>
+                                            <Button className="more-button" variant="link">More about director</Button>
+                                        </Link>
+                                    </div>
+                                </Col>
+                            </Row>
+
+
+                            <Button variant="secondary" size="md" style={{ width: '20rem', margin: '5px' }} onClick={event => handleSubmit(event)}> Add to Favourites </Button>
+                            <Link to={`/`}>
+                                <Button variant="secondary" size="md" style={{ width: '20rem', margin: '5px' }}>Back</Button>
                             </Link>
 
                         </div>
-                        <Button variant="secondary" size="md" style={{ width: '20rem', margin: '5px' }} onClick={event => handleSubmit(event)}> Add to Favourites </Button>
-                        <Link to={`/`}>
-                            <Button variant="secondary" size="md" style={{ width: '20rem', margin: '5px' }}>Back</Button>
-                        </Link>
                     </Media.Body>
 
                 </Media>

@@ -53,10 +53,6 @@ h1 {
 }
 .more-button {
   color: black;
-  max-width: 100px;
-  border-radius: 10px;
-  padding: 5px;
-  height: 100%;
 }
 
 .movie-poster {

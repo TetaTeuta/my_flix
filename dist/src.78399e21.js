@@ -41877,6 +41877,10 @@ var _reactRouterDom = require("react-router-dom");
 
 var _Media = _interopRequireDefault(require("react-bootstrap/Media"));
 
+var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
+
+var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
+
 require("./movie-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -41960,12 +41964,14 @@ function (_React$Component) {
           marginRight: '5rem'
         },
         src: movie.ImagePath
-      })), _react.default.createElement(_Media.default.Body, null, _react.default.createElement("h4", {
+      })), _react.default.createElement(_Media.default.Body, null, _react.default.createElement("div", {
+        className: "container"
+      }, _react.default.createElement(_Row.default, null, _react.default.createElement("h4", {
         className: "value"
       }, " ", movie.Title, " "), _react.default.createElement("p", {
         className: "value"
-      }, movie.Description), _react.default.createElement("div", {
-        className: "movie-genre"
+      }, movie.Description)), _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
+        className: "movie-genre "
       }, _react.default.createElement("h4", {
         className: "label"
       }, "Genre:"), _react.default.createElement("div", {
@@ -41975,7 +41981,7 @@ function (_React$Component) {
       }, _react.default.createElement(_Button.default, {
         className: "more-button",
         variant: "link"
-      }, "More about this genre"))), _react.default.createElement("div", {
+      }, "More about this genre")))), _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
         className: "movie-director"
       }, _react.default.createElement("h4", {
         className: "label"
@@ -41985,9 +41991,8 @@ function (_React$Component) {
         to: "/directors/".concat(movie.Director.Name)
       }, _react.default.createElement(_Button.default, {
         className: "more-button",
-        variant: "link",
-        size: "md"
-      }, "More about director"))), _react.default.createElement(_Button.default, {
+        variant: "link"
+      }, "More about director"))))), _react.default.createElement(_Button.default, {
         variant: "secondary",
         size: "md",
         style: {
@@ -42006,7 +42011,7 @@ function (_React$Component) {
           width: '20rem',
           margin: '5px'
         }
-      }, "Back")))));
+      }, "Back"))))));
     }
   }]);
 
@@ -42029,7 +42034,7 @@ MovieView.propTypes = {
     })
   })
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Media":"../node_modules/react-bootstrap/esm/Media.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Media":"../node_modules/react-bootstrap/esm/Media.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
