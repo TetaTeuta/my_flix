@@ -1,3 +1,6 @@
+.text {
+  text-align: center;
+}
 .btn-register,
 .login-button {
   border-radius: 10px;
@@ -85,16 +88,15 @@ h1 {
   background-color: #a3ce6b;
   color: black;
 }
-.button-back,
-.button-update,
-.button-back:hover,
-.button-update:hover {
-  background-color: #a3ce6b;
-  color: black;
+li {
+  list-style-type: none;
 }
 
-.delete-btn {
-  background-color: red;
+.favs-block {
+  width: 20rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
 }
 body {
   background: #a3ce6b;

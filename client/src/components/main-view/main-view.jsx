@@ -142,14 +142,15 @@ export class MainView extends React.Component {
         return (
             <Router>
 
-                <div >
+                <Row >
                     <Link to={`/users/${user}`}>
-                        <Button className="profile-btn" variant="info">
+                        <Button className="btn btn-dark" style={{ margin: '2rem' }}>
                             Profile</Button>
                     </Link>
-                    <Button className="logout" variant="info" onClick={() => this.onLoggedOut()} >
+
+                    <Button className="btn btn-dark" style={{ margin: '2rem' }} onClick={() => this.onLoggedOut()} >
                         Log out </Button>
-                </div>
+                </Row>
                 <Container className="main-view" fluid="true">
                     <div>
                         <Row className="container-fluid d-flex justify-content-center">

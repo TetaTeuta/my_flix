@@ -35,7 +35,7 @@ export class DirectorView extends React.Component {
                         <br />
                         <br />
                         <Link to={`/`}>
-                            <Button className="back-button" style={{ marginTop: '2rem' }}>Back</Button>
+                            <Button className="btn btn-dark" style={{ marginTop: '2rem' }}>Back</Button>
                         </Link>
                     </Card.Text>
 

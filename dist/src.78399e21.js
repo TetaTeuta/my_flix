@@ -42113,7 +42113,7 @@ function (_React$Component) {
       }, _react.default.createElement("br", null), genre.Description, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
-        className: "back-btn",
+        className: "btn btn-dark",
         style: {
           marginTop: '2rem'
         }
@@ -42206,7 +42206,7 @@ function (_React$Component) {
       }, "Biography: ", _react.default.createElement("br", null), _react.default.createElement("br", null), director.Bio, _react.default.createElement("br", null), _react.default.createElement("br", null), "Birth Year:  ", director.Birth, _react.default.createElement("br", null), "Death year: ", director.Death, _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
-        className: "back-button",
+        className: "btn btn-dark",
         style: {
           marginTop: '2rem'
         }
@@ -43579,17 +43579,17 @@ function (_React$Component) {
       }, "My Profile"), _react.default.createElement(_ListGroup.default, {
         className: "list-group-flush",
         variant: "flush"
-      }, _react.default.createElement(_ListGroup.default.Item, null, "Username: ", username), _react.default.createElement(_ListGroup.default.Item, null, "Password:******* "), _react.default.createElement(_ListGroup.default.Item, null, "Email: ", email), _react.default.createElement(_ListGroup.default.Item, null, "Birthday: ", birthday && birthday.slice(0, 10)), _react.default.createElement(_ListGroup.default.Item, null, "Favorite Movies:", _react.default.createElement("div", null, FavoriteMovies.length === 0 && _react.default.createElement("div", {
+      }, _react.default.createElement(_ListGroup.default.Item, null, "Username: ", username), _react.default.createElement(_ListGroup.default.Item, null, "Password:******* "), _react.default.createElement(_ListGroup.default.Item, null, "Email: ", email), _react.default.createElement(_ListGroup.default.Item, null, "Birthday: ", birthday && birthday.slice(0, 10)), _react.default.createElement(_ListGroup.default.Item, null, "Favorite Movies:", _react.default.createElement("div", {
+        className: "favs-block"
+      }, FavoriteMovies.length === 0 && _react.default.createElement("div", {
         className: "value"
       }, "Nothing has been added!"), FavoriteMovies.length > 0 && _react.default.createElement("ul", null, FavoriteMovies.map(function (favoriteMovie) {
         return _react.default.createElement("li", {
           key: favoriteMovie
-        }, _react.default.createElement("p", {
-          className: "favoriteMovies"
         }, JSON.parse(localStorage.getItem('movies')).find(function (movie) {
           return movie._id === favoriteMovie;
-        }).Title), _react.default.createElement(_Button.default, {
-          className: "delete-btn",
+        }).Title, _react.default.createElement(_Button.default, {
+          variant: "link",
           onClick: function onClick(event) {
             return _this4.deleteMovieFromFavs(event, favoriteMovie);
           }
@@ -43599,13 +43599,17 @@ function (_React$Component) {
       }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
-        className: "button-back",
-        variant: "outline-info"
+        className: "btn btn-dark",
+        style: {
+          margin: '1rem'
+        }
       }, "Back")), _react.default.createElement(_reactRouterDom.Link, {
         to: "/update/".concat(username)
       }, _react.default.createElement(_Button.default, {
-        className: "button-update",
-        variant: "outline-secondary"
+        className: "btn btn-dark",
+        style: {
+          margin: '1rem'
+        }
       }, "Update profile")))));
     }
   }]);
@@ -43983,14 +43987,18 @@ function (_React$Component) {
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
+      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_Row.default, null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/users/".concat(user)
       }, _react.default.createElement(_Button.default, {
-        className: "profile-btn",
-        variant: "info"
+        className: "btn btn-dark",
+        style: {
+          margin: '2rem'
+        }
       }, "Profile")), _react.default.createElement(_Button.default, {
-        className: "logout",
-        variant: "info",
+        className: "btn btn-dark",
+        style: {
+          margin: '2rem'
+        },
         onClick: function onClick() {
           return _this4.onLoggedOut();
         }

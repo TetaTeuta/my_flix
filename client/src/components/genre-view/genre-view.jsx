@@ -31,7 +31,7 @@ export class GenreView extends React.Component {
                         {genre.Description}
                         <Link to={`/`}>
                             <br />
-                            <Button className="back-btn" style={{ marginTop: '2rem' }} >Back</Button>
+                            <Button className="btn btn-dark" style={{ marginTop: '2rem' }} >Back</Button>
                         </Link>
                     </Card.Text>
 

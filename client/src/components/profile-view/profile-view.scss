@@ -1,12 +1,11 @@
-.button-back,
-.button-update,
-.button-back:hover,
-.button-update:hover{
-        background-color: #a3ce6b;
-        color: black;
-        
-    }
 
-    .delete-btn{
-        background-color: red;
-    }
+li{
+    list-style-type: none;
+}
+
+.favs-block{
+    width: 20rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}

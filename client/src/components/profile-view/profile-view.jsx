@@ -87,7 +87,7 @@ export class ProfileView extends React.Component {
                         <ListGroup.Item>Email: {email}</ListGroup.Item>
                         <ListGroup.Item>Birthday: {birthday && birthday.slice(0, 10)}</ListGroup.Item>
                         <ListGroup.Item>Favorite Movies:
-                          <div>
+                          <div className="favs-block">
                                 {FavoriteMovies.length === 0 &&
                                     <div className="value">Nothing has been added!</div>
                                 }
@@ -95,10 +95,10 @@ export class ProfileView extends React.Component {
                                     <ul>
                                         {FavoriteMovies.map(favoriteMovie =>
                                             (<li key={favoriteMovie}>
-                                                <p className="favoriteMovies">
-                                                    {JSON.parse(localStorage.getItem('movies')).find(movie => movie._id === favoriteMovie).Title}
-                                                </p>
-                                                <Button className="delete-btn" onClick={(event) => this.deleteMovieFromFavs(event, favoriteMovie)}>Delete movie</Button>
+
+                                                {JSON.parse(localStorage.getItem('movies')).find(movie => movie._id === favoriteMovie).Title}
+
+                                                <Button variant="link" onClick={(event) => this.deleteMovieFromFavs(event, favoriteMovie)}>Delete movie</Button>
                                             </li>)
                                         )}
                                     </ul>
@@ -108,10 +108,10 @@ export class ProfileView extends React.Component {
                     </ListGroup>
                     <div className="text-center">
                         <Link to={`/`}>
-                            <Button className="button-back" variant="outline-info">Back</Button>
+                            <Button className="btn btn-dark" style={{ margin: '1rem' }}>Back</Button>
                         </Link>
                         <Link to={`/update/${username}`}>
-                            <Button className="button-update" variant="outline-secondary">Update profile</Button>
+                            <Button className="btn btn-dark" style={{ margin: '1rem' }}>Update profile</Button>
                         </Link>
                     </div>
                 </Card.Body>
