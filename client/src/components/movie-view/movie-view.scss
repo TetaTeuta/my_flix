@@ -9,3 +9,9 @@ $text-color: black;
     padding: 5px;
     height: 100%
 };
+
+.movie-poster{
+    box-shadow: 5px 10px 20px 1px rgba(0,0,0,0.253)!important;
+    transform: scale(1.02);
+    transition: transform 0.5s ease;
+   }

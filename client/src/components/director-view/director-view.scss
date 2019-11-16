@@ -2,13 +2,26 @@ $primary-color: #C0C0C0;
 $secondary-color: #b3374e;
 $text-color: black;
 
+.card-body{
+
+    box-shadow: 5px 10px 20px 1px rgba(0,0,0,0.253)!important;
+}
+
+.director-name{
+text-align: center;
+}
+
+.director-bio{
+    display: block;
+    width: 400px;
+    height: 350px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
 .back-button,
-.btn-sm {
-    text-decoration: none;
-    background-color: antiquewhite;
-    color: $text-color;
-    max-width: 100px;
-    border-radius: 10px;
-    padding: 5px;
-    height: 100%
-};
+.back-button:hover{
+    background-color: #a3ce6b;
+    color: black;
+}

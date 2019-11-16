@@ -152,7 +152,7 @@ export class MainView extends React.Component {
                 </div>
                 <Container className="main-view" fluid="true">
                     <div>
-                        <Row className="container-fluid d-flex justify-content-center" style={{ padding: '5rem' }}>
+                        <Row className="container-fluid d-flex justify-content-center">
 
 
 

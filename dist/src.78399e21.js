@@ -41528,16 +41528,17 @@ function LoginView(props) {
     });
   };
 
-  return _react.default.createElement(_Container.default, null, _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("h1", null, "MyFlix movie base"), _react.default.createElement("img", {
+  return _react.default.createElement(_Container.default, null, _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement("h1", null, "MyFlix movie base"))), _react.default.createElement("img", {
     className: "logo, rounded-circle",
     src: _logo.default,
     style: {
       width: '11rem',
       height: '11rem',
-      padding: '10px'
+      padding: '10px',
+      margin: '30px'
     },
     alt: "website logo"
-  }), _react.default.createElement(_Form.default, {
+  }), _react.default.createElement(_Row.default, null, _react.default.createElement(_Form.default, {
     className: "login-form"
   }, _react.default.createElement(_Form.default.Label, null, "Username:", _react.default.createElement("input", {
     type: "text",
@@ -41571,7 +41572,7 @@ function LoginView(props) {
     onClick: function onClick() {
       return window.location.href = "/register";
     }
-  }, "Not a member?")), _react.default.createElement("div", {
+  }, "Not a member?"))), _react.default.createElement("div", {
     className: "buttons"
   })));
 }
@@ -41947,8 +41948,19 @@ function (_React$Component) {
           margin: '10%'
         }
       }, _react.default.createElement(_Media.default, {
-        className: "d-flex flex-column flex-md-row"
-      }, _react.default.createElement(_Media.default.Body, null, _react.default.createElement("h4", {
+        className: "justify-content-center"
+      }, _react.default.createElement(_Media.default, {
+        left: true,
+        href: "#"
+      }, _react.default.createElement("img", {
+        className: "movie-poster",
+        style: {
+          height: '20rem',
+          width: '14rem',
+          marginRight: '5rem'
+        },
+        src: movie.ImagePath
+      })), _react.default.createElement(_Media.default.Body, null, _react.default.createElement("h4", {
         className: "value"
       }, " ", movie.Title, " "), _react.default.createElement("p", {
         className: "value"
@@ -41994,13 +42006,7 @@ function (_React$Component) {
           width: '20rem',
           margin: '5px'
         }
-      }, "Back"))), _react.default.createElement("img", {
-        className: "movie-poster",
-        style: {
-          maxWidth: '23rem'
-        },
-        src: movie.ImagePath
-      })));
+      }, "Back")))));
     }
   }]);
 
@@ -42093,18 +42099,19 @@ function (_React$Component) {
       return _react.default.createElement(_Card.default, {
         className: "mb-1 mb-sm-2",
         style: {
-          width: '16rem',
-          marginLeft: '30%'
+          maxHeight: '26rem'
         }
       }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, {
         className: "genre-name"
-      }, genre.Name), _react.default.createElement(_Card.default.Text, null, _react.default.createElement("br", null), genre.Description), _react.default.createElement("div", {
-        className: "text-center"
-      }, _react.default.createElement(_reactRouterDom.Link, {
+      }, genre.Name), _react.default.createElement(_Card.default.Text, {
+        className: "genre-text"
+      }, _react.default.createElement("br", null), genre.Description, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
-      }, _react.default.createElement(_Button.default, {
-        className: "back-button",
-        variant: "info"
+      }, _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
+        className: "back-btn",
+        style: {
+          marginTop: '2rem'
+        }
       }, "Back")))));
     }
   }]);
@@ -42185,18 +42192,19 @@ function (_React$Component) {
       return _react.default.createElement(_Card.default, {
         className: "mb-1 mb-sm-2",
         style: {
-          width: '16rem',
-          marginLeft: '30%'
+          maxHeight: '26rem'
         }
       }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, {
         className: "director-name"
-      }, director.Name), _react.default.createElement(_Card.default.Text, null, "Biography: ", _react.default.createElement("br", null), _react.default.createElement("br", null), director.Bio, _react.default.createElement("br", null), _react.default.createElement("br", null), "Birth Year:  ", director.Birth, _react.default.createElement("br", null), "Death year: ", director.Death), _react.default.createElement("div", {
-        className: "text-center"
-      }, _react.default.createElement(_reactRouterDom.Link, {
+      }, director.Name), _react.default.createElement(_Card.default.Text, {
+        className: "director-bio"
+      }, "Biography: ", _react.default.createElement("br", null), _react.default.createElement("br", null), director.Bio, _react.default.createElement("br", null), _react.default.createElement("br", null), "Birth Year:  ", director.Birth, _react.default.createElement("br", null), "Death year: ", director.Death, _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         className: "back-button",
-        variant: "info"
+        style: {
+          marginTop: '2rem'
+        }
       }, "Back")))));
     }
   }]);
@@ -43576,12 +43584,11 @@ function (_React$Component) {
         }, JSON.parse(localStorage.getItem('movies')).find(function (movie) {
           return movie._id === favoriteMovie;
         }).Title), _react.default.createElement(_Button.default, {
-          variant: "secondary",
-          size: "sm",
+          className: "delete-btn",
           onClick: function onClick(event) {
             return _this4.deleteMovieFromFavs(event, favoriteMovie);
           }
-        }, "Delete"));
+        }, "Delete movie"));
       }))))), _react.default.createElement("div", {
         className: "text-center"
       }, _react.default.createElement(_reactRouterDom.Link, {
@@ -43986,10 +43993,7 @@ function (_React$Component) {
         className: "main-view",
         fluid: "true"
       }, _react.default.createElement("div", null, _react.default.createElement(_Row.default, {
-        className: "container-fluid d-flex justify-content-center",
-        style: {
-          padding: '5rem'
-        }
+        className: "container-fluid d-flex justify-content-center"
       }, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",

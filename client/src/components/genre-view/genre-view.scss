@@ -1,9 +1,17 @@
-$primary-color: #C0C0C0;
-$secondary-color: #b3374e;
-$text-color: black;
-
-.back-button,
-.btn-sm,
-.mb-1 mb-sm-2 {
-    margin-left: 30px;
-};
+.genre-text{
+    display: block;
+    width: 400px;
+    height: 350px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+.genre-name{
+    text-align: center;
+}
+.back-btn,
+.back-btn:hover{
+    background-color: #a3ce6b;
+    color: black;
+    
+}

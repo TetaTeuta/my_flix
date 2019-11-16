@@ -21,10 +21,10 @@ export class DirectorView extends React.Component {
         if (!director) return null;
 
         return (
-            <Card className="mb-1 mb-sm-2" style={{ width: '16rem', marginLeft: '30%' }}>
+            <Card className="mb-1 mb-sm-2" style={{ maxHeight: '26rem' }}>
                 <Card.Body>
                     <Card.Title className="director-name">{director.Name}</Card.Title>
-                    <Card.Text>
+                    <Card.Text className="director-bio">
                         Biography: <br />
                         <br />
                         {director.Bio}
@@ -32,12 +32,13 @@ export class DirectorView extends React.Component {
                         <br />
                         Birth Year:  {director.Birth}<br />
                         Death year: {director.Death}
-                    </Card.Text>
-                    <div className="text-center">
+                        <br />
+                        <br />
                         <Link to={`/`}>
-                            <Button className="back-button" variant="info">Back</Button>
+                            <Button className="back-button" style={{ marginTop: '2rem' }}>Back</Button>
                         </Link>
-                    </div>
+                    </Card.Text>
+
                 </Card.Body>
             </Card>
         );
