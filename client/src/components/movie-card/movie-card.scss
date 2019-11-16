@@ -1,7 +1,20 @@
+body{
+    background: radial-gradient()
+}
+
 .more-button{
    
     max-width: 100px;
     border-radius: 10px;
     padding: 5px;
     height: 100%
+}
+
+.cardText{
+
+  display: block;
+  width: 180px;
+  height: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

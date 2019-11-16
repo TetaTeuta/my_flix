@@ -41917,9 +41917,13 @@ var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
 
+var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
+
 require("./movie-card.scss");
 
 var _reactRouterDom = require("react-router-dom");
+
+var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41959,20 +41963,28 @@ function (_React$Component) {
       var _this$props = this.props,
           movie = _this$props.movie,
           FavouriteMovies = _this$props.FavouriteMovies;
-      return _react.default.createElement(_Card.default, {
+      return _react.default.createElement(_Col.default, {
+        className: "4",
+        lg: true
+      }, _react.default.createElement(_Card.default, {
         className: "mb-3 mb-sm-4",
-        expand: "lg",
         style: {
-          minWidth: '12rem'
+          width: '14rem',
+          height: '30rem'
         }
       }, _react.default.createElement(_Card.default.Img, {
         variant: "top",
-        src: movie.ImagePath
-      }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, movie.Title), _react.default.createElement(_Card.default.Text, null, movie.Description), _react.default.createElement(_reactRouterDom.Link, {
+        src: movie.ImagePath,
+        style: {
+          maxHeight: '18rem'
+        }
+      }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, movie.Title), _react.default.createElement(_Card.default.Text, {
+        className: "cardText"
+      }, movie.Description), _react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/".concat(movie._id)
       }, _react.default.createElement(_Button.default, {
         variant: "info"
-      }, "Open"))));
+      }, "Open")))));
     }
   }]);
 
@@ -41986,7 +41998,7 @@ MovieCard.propTypes = {
   }).isRequired,
   onClick: _propTypes.default.func
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./movie-card.scss":"components/movie-card/movie-card.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/movie-view/movie-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","./movie-card.scss":"components/movie-card/movie-card.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js"}],"components/movie-view/movie-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -43975,13 +43987,13 @@ function (_React$Component) {
           return _this4.onLoggedOut();
         }
       }, "Log out ")), _react.default.createElement(_Container.default, {
-        className: "main-view"
-      }, _react.default.createElement("div", {
-        className: "container-fluid "
-      }, _react.default.createElement(_Row.default, {
-        className: "mb-3"
-      }, _react.default.createElement(_Col.default, {
-        sm: 4
+        className: "main-view",
+        fluid: "true"
+      }, _react.default.createElement("div", null, _react.default.createElement(_Row.default, {
+        className: "container-fluid d-flex justify-content-center",
+        style: {
+          padding: '5rem'
+        }
       }, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
@@ -44069,7 +44081,7 @@ function (_React$Component) {
             }
           });
         }
-      }))))));
+      })))));
     }
   }]);
 
