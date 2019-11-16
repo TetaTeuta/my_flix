@@ -1,5 +1,5 @@
 body{
-    background: radial-gradient()
+    background: radial-gradient(#e5e5e5, #ffffff, #e5e5e5 );
 }
 
 .more-button{
@@ -10,7 +10,7 @@ body{
     height: 100%
 }
 
-.cardText{
+.card-text{
 
   display: block;
   width: 180px;
@@ -18,3 +18,11 @@ body{
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.card:hover{
+ box-shadow: 5px 10px 20px 1px rgba(0,0,0,0.253)!important;
+}
+
+// .card-body{
+//     padding: 3rem 0 !important;
+// }

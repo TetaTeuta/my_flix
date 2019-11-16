@@ -41984,7 +41984,7 @@ function (_React$Component) {
         to: "/movies/".concat(movie._id)
       }, _react.default.createElement(_Button.default, {
         variant: "info"
-      }, "Open")))));
+      }, "More")))));
     }
   }]);
 
