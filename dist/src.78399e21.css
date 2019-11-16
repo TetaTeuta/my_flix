@@ -3,15 +3,33 @@
   border-radius: 10px;
   padding: 5px;
 }
-body {
-  background: radial-gradient(#e5e5e5, #ffffff, #e5e5e5);
+
+h1 {
+  text-align: center;
 }
 
-.more-button {
-  max-width: 100px;
-  border-radius: 10px;
-  padding: 5px;
-  height: 100%;
+.buttons {
+  align-content: center;
+}
+
+.login-form {
+  height: 200px;
+  width: 150px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.more-btn {
+  background-color: #a3ce6b;
+  color: black;
+}
+
+.more-btn:hover {
+  background-color: #a3ce6b;
+  color: black;
 }
 
 .card-text {
@@ -24,6 +42,13 @@ body {
 
 .card:hover {
   box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
+  transform: scale(1.02);
+  transition: transform 0.5s ease;
+}
+
+.card {
+  transform: scale(1);
+  transition: transform 0.5s ease;
 }
 .more-button {
   color: black;
@@ -47,8 +72,15 @@ body {
   padding: 5px;
   height: 100%;
 }
+.button-back,
+.button-update,
+.button-back:hover,
+.button-update:hover {
+  background-color: #a3ce6b;
+  color: black;
+}
 body {
-  background-color: #C0C0C0;
+  background: #a3ce6b;
   font-family: "Ruda", sans-serif;
 }
 

@@ -7,7 +7,6 @@ import Logo from './logo.jpg';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-import { RegistrationView } from '../registration-view/registration-view';
 import Container from 'react-bootstrap/Container';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -36,30 +35,31 @@ export function LoginView(props) {
     };
 
     return (
-        <Container className="justify-content-center" >
+        <Container>
             <Router>
-                <Row >
-                    <img className="logo" src={Logo} alt="website logo" />
-                    <Col xs={11} sm={8} md={6} className="form-container">
+                <h1>MyFlix movie base</h1>
 
-                        <Form className="login-form" >
-                            <Form.Label>
-                                Username:
+                <img className="logo, rounded-circle" src={Logo} style={{ width: '11rem', height: '11rem', padding: '10px' }} alt="website logo" />
+
+                <Form className="login-form" >
+                    <Form.Label>
+                        Username:
                       <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-                            </Form.Label>
-                            <Form.Label>
-                                Password:
+                    </Form.Label>
+                    <Form.Label>
+                        Password:
                       <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-                            </Form.Label>
-                            <Link to={`/`}>
-                                <Button className="login-button" variant="secondary" size="md" style={{ width: '20rem', margin: '5px' }} onClick={handleSubmit}>Log in</Button>
-                            </Link>
-                            <Button className="btn-register" variant="secondary" size="md" style={{ width: '20rem', margin: '5px' }} onClick={() => window.location.href = "/register"}>Not a member yet?</Button>
-                        </Form>
-                    </Col>
-                </Row>
+                    </Form.Label>
+                    <Link to={`/`}>
+                        <Button className="btn btn-dark" variant="secondary" style={{ width: '10rem', margin: '5px' }} onClick={handleSubmit}>Log in</Button>
+                    </Link>
+                    <Button className="btn btn-dark" variant="secondary" style={{ width: '10rem', margin: '5px' }} onClick={() => window.location.href = "/register"}>Not a member?</Button>
+
+                </Form>
+                <div className="buttons">
+                </div>
             </Router>
-        </Container >
+        </Container>
     );
 }
 

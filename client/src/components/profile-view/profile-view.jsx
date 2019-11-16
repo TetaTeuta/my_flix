@@ -78,7 +78,7 @@ export class ProfileView extends React.Component {
         const movies = JSON.parse(localStorage.getItem(movies));
 
         return (
-            <Card className="profile-view" style={{ width: '32rem' }}>
+            <Card className="profile-view" style={{ width: '20rem' }}>
                 <Card.Body>
                     <Card.Title className="profile-title">My Profile</Card.Title>
                     <ListGroup className="list-group-flush" variant="flush">
