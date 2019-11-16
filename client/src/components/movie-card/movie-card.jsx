@@ -14,7 +14,7 @@ export class MovieCard extends React.Component {
         const { movie, FavouriteMovies } = this.props;
 
         return (
-            <Col  lg={true} >
+            <Col lg={true} >
 
                 <Card className="mb-3 mb-sm-4" style={{ width: '14rem', height: '30rem' }}>
                     <Card.Img className="card-image" variant="top" src={movie.ImagePath} style={{ maxHeight: '18rem' }} />
@@ -22,7 +22,7 @@ export class MovieCard extends React.Component {
                         <Card.Title>{movie.Title}</Card.Title>
                         <Card.Text className="center">{movie.Description}</Card.Text>
                         <Link to={`/movies/${movie._id}`}>
-                            <Button className="more-btn" variant="info">More</Button>
+                            <Button className="btn btn-dark" variant="secondary">More</Button>
                         </Link>
                     </Card.Body>
                 </Card>

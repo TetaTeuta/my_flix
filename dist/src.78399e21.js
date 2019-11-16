@@ -41836,8 +41836,8 @@ function (_React$Component) {
       }, movie.Description), _react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/".concat(movie._id)
       }, _react.default.createElement(_Button.default, {
-        className: "more-btn",
-        variant: "info"
+        className: "btn btn-dark",
+        variant: "secondary"
       }, "More")))));
     }
   }]);
