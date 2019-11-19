@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
+// import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 import { MovieCard } from '../movie-card/movie-card';
 
 import Container from 'react-bootstrap/Container';
@@ -30,10 +30,10 @@ function MoviesList(props) {
                 {filteredMovies.map(m =>
                     <Col key={m._id} xs={12} sm={6} md={4} lg={4}>
                         <MovieCard key={m._id} movie={m} />
-                </Col>
+                    </Col>
                 )}
             </Row>
         </Container>
     </div>;
-    }
+}
 export default connect(mapStateToProps)(MoviesList);

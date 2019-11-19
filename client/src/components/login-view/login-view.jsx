@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Logo from './logo.jpg';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
@@ -41,9 +40,9 @@ export function LoginView(props) {
                     <Col>
                         <h1>MyFlix movie base</h1>
                     </Col>
-                </Row>
+                    {/* </Row>
                 <img className="logo, rounded-circle" src={Logo} style={{ width: '11rem', height: '11rem', padding: '10px', margin: '30px' }} alt="website logo" />
-                <Row>
+                <Row> */}
                     <Form className="login-form">
                         <Form.Label>
                             Username:
