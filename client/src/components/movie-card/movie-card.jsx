@@ -11,10 +11,10 @@ import Container from 'react-bootstrap/Container';
 
 export class MovieCard extends React.Component {
     render() {
-        const { movie, FavouriteMovies } = this.props;
+        const { movie } = this.props;
 
         return (
-            <Col lg={true} >
+            <Col>
 
                 <Card className="xs=12 md=8 mb-sm-4" style={{ width: '14rem', height: '32rem' }}>
                     <Card.Img className="card-image" variant="top" src={movie.ImagePath} style={{ maxHeight: '18rem' }} />

@@ -1,33 +1,102 @@
-.more-button {
-  max-width: 100px;
+.btn-register,
+.login-button {
   border-radius: 10px;
   padding: 5px;
-  height: 100%;
+}
+
+h1 {
+  text-align: center;
+  overflow: hidden;
+}
+
+.buttons {
+  align-content: center;
+}
+
+.login-form {
+  height: 200px;
+  width: 150px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.card-text {
+  display: block;
+  width: 180px;
+  height: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card:hover {
+  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
+  transform: scale(1.02);
+  transition: transform 0.5s ease;
 }
 .more-button {
   color: black;
-  max-width: 100px;
-  border-radius: 10px;
-  padding: 5px;
-  height: 100%;
 }
-.back-button,
-.btn-sm,
-.mb-1 mb-sm-2 {
-  margin-left: 30px;
+
+.movie-poster {
+  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
+  transform: scale(1.02);
+  transition: transform 0.5s ease;
 }
-.back-button,
-.btn-sm {
-  text-decoration: none;
-  background-color: antiquewhite;
+.genre-text {
+  display: block;
+  width: 400px;
+  height: 350px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.genre-name {
+  text-align: center;
+}
+
+.back-btn,
+.back-btn:hover {
+  background-color: #a3ce6b;
   color: black;
-  max-width: 100px;
-  border-radius: 10px;
-  padding: 5px;
-  height: 100%;
+}
+.card-body {
+  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
+}
+
+.director-name {
+  text-align: center;
+}
+
+.director-bio {
+  display: block;
+  width: 400px;
+  height: 350px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.back-button,
+.back-button:hover {
+  background-color: #a3ce6b;
+  color: black;
+}
+li {
+  list-style-type: none;
+}
+
+.favs-block {
+  width: 20rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
 }
 body {
-  background-color: #C0C0C0;
+  background: #a3ce6b;
   font-family: "Ruda", sans-serif;
 }
 
@@ -38,6 +107,7 @@ body {
   border-radius: 10px;
   padding: 5px;
   height: 100%;
+  transform: scale(1.05);
 }
 
 .logo {

@@ -46,7 +46,7 @@ export class MovieView extends React.Component {
 
 
                 <Media className="justify-content-center">
-                    <Media left href="#"><img className="movie-poster" style={{ height: '20rem', width: '14rem', marginRight: '5rem' }} src={movie.ImagePath} /></Media>
+                    <Media left="#"><img className="movie-poster" style={{ height: '20rem', width: '14rem', marginRight: '5rem' }} src={movie.ImagePath} /></Media>
                     <Media.Body>
                         <div className="container">
                             <Row>

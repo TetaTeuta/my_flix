@@ -41809,12 +41809,8 @@ function (_React$Component) {
   _createClass(MovieCard, [{
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          movie = _this$props.movie,
-          FavouriteMovies = _this$props.FavouriteMovies;
-      return _react.default.createElement(_Col.default, {
-        lg: true
-      }, _react.default.createElement(_Card.default, {
+      var movie = this.props.movie;
+      return _react.default.createElement(_Col.default, null, _react.default.createElement(_Card.default, {
         className: "xs=12 md=8 mb-sm-4",
         style: {
           width: '14rem',
@@ -41950,8 +41946,7 @@ function (_React$Component) {
       }, _react.default.createElement(_Media.default, {
         className: "justify-content-center"
       }, _react.default.createElement(_Media.default, {
-        left: true,
-        href: "#"
+        left: "#"
       }, _react.default.createElement("img", {
         className: "movie-poster",
         style: {
