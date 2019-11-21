@@ -41534,10 +41534,9 @@ function LoginView(props) {
     });
   };
 
-  var hendleKeyPress = function hendleKeyPress(e) {
+  var handleKeyPress = function handleKeyPress(e) {
     if (event.key === 'Enter') {
       e.preventDefault();
-      /* Send a request to the server for authentication */
 
       _axios.default.post('https://my-flix-teuta.herokuapp.com/login', {
         Username: username,
@@ -41565,7 +41564,7 @@ function LoginView(props) {
     onChange: function onChange(e) {
       return setPassword(e.target.value);
     },
-    onKeyPress: hendleKeyPress
+    onKeyPress: handleKeyPress
   })), _react.default.createElement(_reactRouterDom.Link, {
     to: "/"
   }, _react.default.createElement(_Button.default, {
@@ -41791,8 +41790,6 @@ require("./movie-card.scss");
 
 var _reactRouterDom = require("react-router-dom");
 
-var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -41862,7 +41859,7 @@ MovieCard.propTypes = {
   }).isRequired,
   onClick: _propTypes.default.func
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","./movie-card.scss":"components/movie-card/movie-card.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js"}],"components/movie-view/movie-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","./movie-card.scss":"components/movie-card/movie-card.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/movie-view/movie-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);

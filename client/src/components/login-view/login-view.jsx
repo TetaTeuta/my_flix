@@ -33,10 +33,9 @@ export function LoginView(props) {
             });
     };
 
-    const hendleKeyPress = (e) => {
+    const handleKeyPress = (e) => {
         if (event.key === 'Enter') {
             e.preventDefault();
-            /* Send a request to the server for authentication */
             axios.post('https://my-flix-teuta.herokuapp.com/login', {
                 Username: username,
                 Password: password
@@ -68,7 +67,7 @@ export function LoginView(props) {
                         </Form.Label>
                         <Form.Label>
                             Password:
-                      <input type="password" value={password} onChange={e => setPassword(e.target.value)} onKeyPress={hendleKeyPress} />
+                      <input type="password" value={password} onChange={e => setPassword(e.target.value)} onKeyPress={handleKeyPress} />
                         </Form.Label>
                         <Link to={`/`}>
                             <Button className="btn btn-dark" variant="secondary" style={{ width: '10rem', margin: '5px' }} onClick={handleSubmit}>Log in</Button>
