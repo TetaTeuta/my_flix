@@ -3,9 +3,7 @@ import axios from 'axios';
 import propTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Media from 'react-bootstrap/Media';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 import { connect } from 'react-redux';
 
@@ -22,7 +20,6 @@ import { ProfileView } from '../profile-view/profile-view';
 import { ProfileUpdate } from '../profile-view/profile-update';
 import { RegistrationView } from '../registration-view/registration-view';
 import { setMovies } from '../../actions/actions';
-import { useStore } from 'react-redux';
 import MoviesList from '../movies-list/movies-list';
 
 
@@ -35,7 +32,7 @@ export class MainView extends React.Component {
         // const store = useStore()
 
         this.state = {
-            movies: [],
+            // movies: [],
             user: null,
             email: '',
             birthday: '',
@@ -95,8 +92,8 @@ export class MainView extends React.Component {
         })
             .then(response => {
                 // Assign the result to the state
-                this.setState({ movies: response.data });
-                // this.props.setMovies(response.data);
+                // this.setState({ movies: response.data });
+                this.props.setMovies(response.data);
                 localStorage.setItem('movies', JSON.stringify(response.data));
             })
             .catch(function (error) {
@@ -127,9 +124,9 @@ export class MainView extends React.Component {
 
     render() {
 
-        const { movies, user, filterString, userInfo, token } = this.state;
+        let { user, filterString, userInfo, token } = this.state;
 
-        // let { movies } = this.props;
+        let { movies } = this.props;
 
         // Before the movies have been loaded
         if (!movies) return <div className="main-view" />;
@@ -152,18 +149,12 @@ export class MainView extends React.Component {
 
                             <Route exact path="/" render={() => {
                                 if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-                                return movies.map(m => <MovieCard key={m._id} movie={m} />)
-                            }
-                            } />
+                                return <MoviesList movies={movies} />;
+                            }} />
 
-                            <Route path="/register" render={() => {
-                                if (!user) return <RegistrationView onLoggedIn={user => this.onLoggedIn(user)} />;
-                                return movies.map(m => <MovieCard key={m._id} movie={m} />)
-                            }
-                            } />
+                            <Route path="/register" render={() => <RegistrationView />} />
 
-                            <Route path="/movies/:movieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
-                            <Route path="/directors/:name" render={({ match }) => {
+                            <Route path="/movies/:movieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />                            <Route path="/directors/:name" render={({ match }) => {
                                 if (!movies || !movies.length) return <div className="main-view" />;
                                 return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
                             }
