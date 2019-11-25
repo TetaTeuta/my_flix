@@ -54,6 +54,7 @@ export class MainView extends React.Component {
             });
             this.getMovies(accessToken);
         }
+
     }
 
     onMovieClick = (movie) => {
@@ -126,7 +127,7 @@ export class MainView extends React.Component {
 
     render() {
 
-        const { movies, user, selectedMovie, userInfo, token } = this.state;
+        const { movies, user, filterString, userInfo, token } = this.state;
 
         // let { movies } = this.props;
 

@@ -14,7 +14,6 @@ export class MovieCard extends React.Component {
 
         return (
             <Col>
-
                 <Card className="xs=12 md=8 mb-sm-4" style={{ width: '14rem', height: '32rem' }}>
                     <Card.Img className="card-image" variant="top" src={movie.ImagePath} style={{ maxHeight: '18rem' }} />
                     <Card.Body>
@@ -32,7 +31,8 @@ export class MovieCard extends React.Component {
 
 MovieCard.propTypes = {
     movie: PropTypes.shape({
-        Title: PropTypes.string
-    }).isRequired,
+        Title: PropTypes.string,
+        Description: PropTypes.string
+    }),
     onClick: PropTypes.func
 };
