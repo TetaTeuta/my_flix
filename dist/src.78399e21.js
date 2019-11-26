@@ -43770,12 +43770,7 @@ function RegistrationView(props) {
 RegistrationView.propTypes = {
   onNewUserRegistered: _propTypes.default.func
 };
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/movies-list/movies-list.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/movies-list/movies-list.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/movies-list/movies-list.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43789,16 +43784,9 @@ var _reactRedux = require("react-redux");
 
 var _movieCard = require("../movie-card/movie-card");
 
-var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
-
-var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
-
-require("./movies-list.scss");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
-var mapsStateToProps = function mapsStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state) {
   var visibilityFilter = state.visibilityFilter;
   return {
     visibilityFilter: visibilityFilter
@@ -43819,28 +43807,18 @@ function MoviesList(props) {
   if (!movies) return _react.default.createElement("div", {
     className: "main-view"
   });
-  return _react.default.createElement("div", {
-    className: "movies-list"
-  }, _react.default.createElement(VisibilityFilterInput, {
-    visibilityFilter: visibilityFilter
-  }), _react.default.createElement(_Container.default, null, _react.default.createElement(_Row.default, null, filteredMovies.map(function (m) {
-    return _react.default.createElement(Col, {
-      key: m._id,
-      xs: 12,
-      sm: 6,
-      md: 4,
-      lg: 4
-    }, _react.default.createElement(_movieCard.MovieCard, {
+  return filteredMovies.map(function (m) {
+    return _react.default.createElement(_movieCard.MovieCard, {
       key: m._id,
       movie: m
-    }));
-  }))));
+    });
+  });
 }
 
-var _default = (0, _reactRedux.connect)(mapsStateToProps)(MoviesList);
+var _default = (0, _reactRedux.connect)(mapStateToProps)(MoviesList);
 
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","../movie-card/movie-card":"components/movie-card/movie-card.jsx","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","./movies-list.scss":"components/movies-list/movies-list.scss"}],"actions/actions.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","../movie-card/movie-card":"components/movie-card/movie-card.jsx"}],"actions/actions.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
