@@ -43778,14 +43778,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.setMovies = setMovies;
 exports.setFilter = setFilter;
-exports.setUser = setUser;
-exports.SET_USER = exports.SET_FILTER = exports.SET_MOVIES = void 0;
+exports.setUsers = setUsers;
+exports.SET_USERS = exports.SET_FILTER = exports.SET_MOVIES = void 0;
 var SET_MOVIES = 'SET_MOVIES';
 exports.SET_MOVIES = SET_MOVIES;
 var SET_FILTER = 'SET_FILTER';
 exports.SET_FILTER = SET_FILTER;
-var SET_USER = 'SET_USER';
-exports.SET_USER = SET_USER;
+var SET_USERS = 'SET_USERS';
+exports.SET_USERS = SET_USERS;
 
 function setMovies(value) {
   return {
@@ -43801,9 +43801,9 @@ function setFilter(value) {
   };
 }
 
-function setUser(value) {
+function setUsers(value) {
   return {
-    type: SET_USER,
+    type: SET_USERS,
     value: value
   };
 }
@@ -44257,9 +44257,23 @@ function movies() {
   }
 }
 
+function users() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions.SET_USERS:
+      return action.value;
+
+    default:
+      return state;
+  }
+}
+
 var moviesApp = (0, _redux.combineReducers)({
   visibilityFilter: visibilityFilter,
-  movies: movies
+  movies: movies,
+  users: users
 });
 var _default = moviesApp;
 exports.default = _default;
