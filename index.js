@@ -8,7 +8,7 @@ const Movies = Models.Movie;
 const Users = Models.User;
 const cors = require('cors');
 const passport = require('passport');
-require('./passport');
+const path = require("path");
 const { check, validationResult } = require('express-validator');
 
 const app = express();
@@ -42,7 +42,11 @@ var auth = require('./auth')(app);
 
 
 app.use(morgan('common'));
-app.use('/documentation.html', express.static(__dirname + '/public'));
+app.use('/documentation.html', express.static('public'));
+app.use("/client", express.static(path.join(__dirname, "client", "dist")));
+app.get("/client/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 app.use(function (err, req, res, next) {
   console.error(err.stack);                // err.stack is default error-handling middleware function
   res.status(500).send('Something broke!');
