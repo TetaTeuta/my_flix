@@ -43,9 +43,9 @@ var auth = require('./auth')(app);
 
 app.use(morgan('common'));
 app.use('/documentation.html', express.static('public'));
-app.use("/client", express.static(path.join(__dirname, "client")));
+app.use("/client", express.static(path.join(__dirname, "client", "src")));
 app.get("/client/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "index.html"));
+  res.sendFile(path.join(__dirname, "client", "src", "index.html"));
 });
 app.use(function (err, req, res, next) {
   console.error(err.stack);                // err.stack is default error-handling middleware function
