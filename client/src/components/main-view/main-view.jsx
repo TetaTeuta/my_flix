@@ -130,7 +130,7 @@ export class MainView extends React.Component {
         if (!movies) return <div className="main-view" />;
 
         return (
-            <Router>
+            <Router basename="/client">
 
                 <Row >
                     <Link to={`/users/${user}`}>
