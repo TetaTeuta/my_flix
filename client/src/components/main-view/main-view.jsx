@@ -19,9 +19,8 @@ import { DirectorView } from '../director-view/director-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { ProfileUpdate } from '../profile-view/profile-update';
 import { RegistrationView } from '../registration-view/registration-view';
-import { setMovies } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
-
+import { setMovies } from '../../actions/actions';
 
 
 export class MainView extends React.Component {
@@ -124,9 +123,8 @@ export class MainView extends React.Component {
 
     render() {
 
-        let { user, filterString, userInfo, token } = this.state;
-
         let { movies } = this.props;
+        let { user, filterString, userInfo, token } = this.state;
 
         // Before the movies have been loaded
         if (!movies) return <div className="main-view" />;
@@ -154,7 +152,8 @@ export class MainView extends React.Component {
 
                             <Route path="/register" render={() => <RegistrationView />} />
 
-                            <Route path="/movies/:movieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />                            <Route path="/directors/:name" render={({ match }) => {
+                            <Route path="/movies/:movieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
+                            <Route path="/directors/:name" render={({ match }) => {
                                 if (!movies || !movies.length) return <div className="main-view" />;
                                 return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
                             }
@@ -185,5 +184,5 @@ let mapStateToProps = state => {
 export default connect(mapStateToProps, { setMovies })(MainView);
 
 MainView.propTypes = {
-    // will add it later 
+    dispatch: propTypes.func
 };

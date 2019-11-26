@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-// import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
+import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input'
 import { MovieCard } from '../movie-card/movie-card';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import './movies-list.scss'
 
-const mapStateToProps = state => {
+const mapsStateToProps = state => {
     const { visibilityFilter } = state;
     return { visibilityFilter };
 };
@@ -36,4 +36,4 @@ function MoviesList(props) {
         </Container>
     </div>;
 }
-export default connect(mapStateToProps)(MoviesList);
+export default connect(mapsStateToProps)(MoviesList);
