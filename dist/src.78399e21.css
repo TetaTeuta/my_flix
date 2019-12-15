@@ -1,0 +1,122 @@
+.btn-register,
+.login-button {
+  border-radius: 10px;
+  padding: 5px;
+}
+
+h1 {
+  text-align: center;
+  overflow: hidden;
+}
+
+.buttons {
+  align-content: center;
+}
+
+.login-form {
+  height: 200px;
+  width: 150px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.card-text {
+  display: block;
+  width: 180px;
+  height: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card:hover {
+  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
+  transform: scale(1.02);
+  transition: transform 0.5s ease;
+}
+.more-button {
+  color: black;
+}
+
+.movie-poster {
+  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
+  transform: scale(1.02);
+  transition: transform 0.5s ease;
+}
+.genre-text {
+  display: block;
+  width: 400px;
+  height: 350px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.genre-name {
+  text-align: center;
+}
+
+.back-btn,
+.back-btn:hover {
+  background-color: #a3ce6b;
+  color: black;
+}
+.card-body {
+  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
+}
+
+.director-name {
+  text-align: center;
+}
+
+.director-bio {
+  display: block;
+  width: 400px;
+  height: 350px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.back-button,
+.back-button:hover {
+  background-color: #a3ce6b;
+  color: black;
+}
+li {
+  list-style-type: none;
+}
+
+.favs-block {
+  width: 20rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+body {
+  background: #a3ce6b;
+  font-family: "Ruda", sans-serif;
+}
+
+.submit-button,
+.btn-sm {
+  color: black;
+  max-width: 100px;
+  border-radius: 10px;
+  padding: 5px;
+  height: 100%;
+  transform: scale(1.05);
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 60px;
+  padding: 5px;
+  align-items: center;
+  margin-left: 140px;
+}
+
+/*# sourceMappingURL=/src.78399e21.css.map */
