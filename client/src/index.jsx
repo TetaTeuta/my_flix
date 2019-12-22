@@ -7,7 +7,7 @@ import MainView from './components/main-view/main-view';
 
 import moviesApp from './reducers/reducers';
 
-import '.index.scss';
+import './index.scss';
 
 const store = createStore(moviesApp);
 
