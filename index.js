@@ -42,7 +42,7 @@ var auth = require('./auth')(app);
 
 
 app.use(morgan('common'));
-app.use(express.static(__dirname + "/public/dist"));
+app.use('/public', express.static(path.resolve(__dirname, '../public/dist')));
 app.use("/client", express.static(path.join(__dirname, "client", "dist")));
 app.get("/client/*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
