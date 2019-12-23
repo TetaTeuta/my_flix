@@ -44,9 +44,17 @@ var auth = require('./auth')(app);
 app.use(morgan('common'));
 app.use("/public", express.static(path.resolve(__dirname, "../public/dist")));
 app.use("/client", express.static(path.join(__dirname, "client", "dist")));
-app.use("/client/*", express.static(path.join(__dirname, "client", "dist")));
+app.get("/client/*", (req, res) => {
+  if (req.is('application/*')) {
+    res.set('Content-Type', 'application/javascript');
+  }
+  if (req.is('text/css')) {
+    res.set('Content-Type', 'text/css');
+  }
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 app.use(function (err, req, res, next) {
-  console.error(err.stack);                // err.stack is default error-handling middleware function
+  console.error(err.stack); // err.stack is default error-handling middleware function
   res.status(500).send('Something broke!');
   next();
 });
