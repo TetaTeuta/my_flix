@@ -8,7 +8,7 @@ const Movies = Models.Movie;
 const Users = Models.User;
 const cors = require('cors');
 const passport = require('passport');
-const path = require("path");
+const path = require('path');
 const { check, validationResult } = require('express-validator');
 
 const app = express();
@@ -42,16 +42,16 @@ var auth = require('./auth')(app);
 
 
 app.use(morgan('common'));
-app.use("/public", express.static(path.resolve(__dirname, "../public/dist")));
-app.use("/client", express.static(path.join(__dirname, "client", "dist")));
-app.get("/client/*", (req, res) => {
+app.use('/public', express.static(path.resolve(__dirname, '../public/dist')));
+app.use('/client', express.static(path.join(__dirname, 'client', 'dist')));
+app.get('/client/*', (req, res) => {
   if (req.is('application/*')) {
     res.set('Content-Type', 'application/javascript');
   }
   if (req.is('text/css')) {
     res.set('Content-Type', 'text/css');
   }
-  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
 app.use(function (err, req, res, next) {
   console.error(err.stack); // err.stack is default error-handling middleware function
