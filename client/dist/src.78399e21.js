@@ -41545,7 +41545,7 @@ function LoginView(props) {
       margin: '5px'
     },
     onClick: function onClick() {
-      return window.location.href = "/register";
+      return window.location.href = "/client/register";
     }
   }, "Not a member?"))), _react.default.createElement("div", {
     className: "buttons"
@@ -43879,8 +43879,8 @@ function MoviesList(props) {
   var filteredMovies = movies;
 
   if (visibilityFilter !== '') {
-    filteredMovies = movies.filter(function (m) {
-      return m.Title.includes(visibilityFilter);
+    filteredMovies = movies.filter(function (movie) {
+      return movie.Title.toLowerCase().includes(visibilityFilter.toLowerCase());
     });
   }
 
@@ -44376,7 +44376,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52567" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58452" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
