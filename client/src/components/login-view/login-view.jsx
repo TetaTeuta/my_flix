@@ -73,8 +73,10 @@ export function LoginView(props) {
                         </Form.Label>
                         <Link to={`/`}>
                             <Button className="btn btn-dark" variant="secondary" style={{ width: '10rem', margin: '5px' }} onClick={handleSubmit}>Log in</Button>
+
+                            <Button className="btn btn-dark" variant="secondary" style={{ width: '10rem', margin: '5px' }} onClick={() => window.location.href = "/register"}>Not a member?</Button>
                         </Link>
-                        <Button className="btn btn-dark" variant="secondary" style={{ width: '10rem', margin: '5px' }} onClick={() => window.location.href = "/register"}>Not a member?</Button>
+
 
                     </Form>
                 </Row>

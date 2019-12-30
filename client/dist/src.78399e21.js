@@ -41537,7 +41537,7 @@ function LoginView(props) {
       margin: '5px'
     },
     onClick: handleSubmit
-  }, "Log in")), _react.default.createElement(_Button.default, {
+  }, "Log in"), _react.default.createElement(_Button.default, {
     className: "btn btn-dark",
     variant: "secondary",
     style: {
@@ -41547,7 +41547,7 @@ function LoginView(props) {
     onClick: function onClick() {
       return window.location.href = "/register";
     }
-  }, "Not a member?"))), _react.default.createElement("div", {
+  }, "Not a member?")))), _react.default.createElement("div", {
     className: "buttons"
   })));
 }
@@ -44376,7 +44376,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61458" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63095" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
