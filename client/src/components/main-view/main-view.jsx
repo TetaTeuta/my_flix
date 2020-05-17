@@ -25,164 +25,192 @@ import { setMovies } from '../../actions/actions';
 
 export class MainView extends React.Component {
 
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        // const store = useStore()
+    // const store = useStore()
 
-        this.state = {
-            // movies: [],
-            user: null,
-            email: '',
-            birthday: '',
-            userInfo: {}
-        };
+    this.state = {
+      // movies: [],
+      user: null,
+      email: '',
+      birthday: '',
+      userInfo: {}
+    };
 
 
+  }
+
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user'),
+        token: accessToken
+      });
+      this.getMovies(accessToken);
     }
 
-    componentDidMount() {
-        let accessToken = localStorage.getItem('token');
-        if (accessToken !== null) {
-            this.setState({
-                user: localStorage.getItem('user'),
-                token: accessToken
-            });
-            this.getMovies(accessToken);
-        }
+  }
 
-    }
+  onMovieClick = (movie) => {
+    this.setState({
+      selectedMovie: movie
+    });
+  }
 
-    onMovieClick = (movie) => {
-        this.setState({
-            selectedMovie: movie
-        });
-    }
+  onFilterChange = (event) => {
+    this.setState({
+      filterString: event.target.value
+    });
+  }
 
-    onFilterChange = (event) => {
-        this.setState({
-            filterString: event.target.value
-        });
-    }
+   /**
+     * Information sent to post from login-view
+     * @function onLoggedIn
+     * @param {*} authData 
+     * @returns {localStorage}
+     * @returns {state}
+     */
 
-    onLoggedIn(authData) {
-        console.log(authData);
-        this.setState({
-            user: authData.user.Username,
-            token: authData.token
-        });
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.setState({
+      user: authData.user.Username,
+      token: authData.token
+    });
 
-        localStorage.setItem('token', authData.token);
-        localStorage.setItem('user', authData.user.Username);
-        this.getMovies(authData.token);
-    }
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
+  }
+  
+/**
+     * Once the logout is triggered, the local storage is removed and the login page is rendered.
+     * @function onLogout
+     * @param user
+     * @returns {state} 
+     */
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
+    });
+  }
 
-    onLoggedOut() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        this.setState({
-            user: null
-        });
-    }
+  /**
+  * When the user has logged in, the list of available movies is rendered
+  * @function getMovies
+  * @param {*} token 
+  * @returns {array} movie list
+  */
 
-    getMovies(token) {
-        axios.get('https://my-flix-teuta.herokuapp.com/movies', {
-            headers: { Authorization: `Bearer ${token}` }
-        })
-            .then(response => {
-                // Assign the result to the state
-                // this.setState({ movies: response.data });
-                this.props.setMovies(response.data);
-                localStorage.setItem('movies', JSON.stringify(response.data));
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
+  getMovies(token) {
+    axios.get('https://my-flix-teuta.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(response => {
+        // Assign the result to the state
+        // this.setState({ movies: response.data });
+        this.props.setMovies(response.data);
+        localStorage.setItem('movies', JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
-    getUser(token) {
-        axios
-            .get('https://my-flix-teuta.herokuapp.com/users/', {
-                headers: { Authorization: `Bearer ${token}` }
-            })
-            .then(response => {
-                this.props.setLoggedUser(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }
+  /**
+       * Get user profile data
+       * @function getUser
+       * @param {*} token 
+       * @returns {object}
+       */
 
-    updateUser(data) {
-        this.setState({
-            userInfo: data
-        });
-        localStorage.setItem('user', data.Username);
-    }
+  getUser(token) {
+    axios
+      .get('https://my-flix-teuta.herokuapp.com/users/', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then(response => {
+        this.props.setLoggedUser(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  updateUser(data) {
+    this.setState({
+      userInfo: data
+    });
+    localStorage.setItem('user', data.Username);
+  }
 
 
-    render() {
+  render() {
 
-        let { movies } = this.props;
-        let { user, filterString, userInfo, token } = this.state;
+    let { movies } = this.props;
+    let { user, filterString, userInfo, token } = this.state;
 
-        // Before the movies have been loaded
-        if (!movies) return <div className="main-view" />;
+    // Before the movies have been loaded
+    if (!movies) return <div className="main-view" />;
 
-        return (
-            <Router basename="/client">
+    return (
+      <Router basename="/client">
 
-                <Row >
-                    <Link to={`/users/${user}`}>
-                        <Button className="btn btn-dark" style={{ margin: '2rem' }}>
-                            Profile</Button>
-                    </Link>
+        <Row >
+          <Link to={`/users/${user}`}>
+            <Button className="btn btn-dark" style={{ margin: '2rem' }}>
+              Profile</Button>
+          </Link>
 
-                    <Button className="btn btn-dark" style={{ margin: '2rem' }} onClick={() => this.onLoggedOut()} >
-                        Log out </Button>
-                </Row>
-                <Container className="main-view" fluid="true">
-                    <div>
-                        <Row className="container-fluid d-flex justify-content-center">
+          <Button className="btn btn-dark" style={{ margin: '2rem' }} onClick={() => this.onLoggedOut()} >
+            Log out </Button>
+        </Row>
+        <Container className="main-view" fluid="true">
+          <div>
+            <Row className="container-fluid d-flex justify-content-center">
 
-                            <Route exact path="/" render={() => {
-                                if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-                                return <MoviesList movies={movies} />;
-                            }} />
+              <Route exact path="/" render={() => {
+                if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+                return <MoviesList movies={movies} />;
+              }} />
 
-                            <Route path="/register" render={() => <RegistrationView />} />
+              <Route path="/client/register" render={() => <RegistrationView />} />
 
-                            <Route path="/movies/:movieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
-                            <Route path="/directors/:name" render={({ match }) => {
-                                if (!movies || !movies.length) return <div className="main-view" />;
-                                return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
-                            }
-                            } />
+              <Route path="/movies/:movieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
+              <Route path="/directors/:name" render={({ match }) => {
+                if (!movies || !movies.length) return <div className="main-view" />;
+                return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+              }
+              } />
 
-                            <Route path="/genres/:name" render={({ match }) => {
-                                if (!movies || !movies.length) return <div className="main-view" />;
-                                return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
-                            }
-                            } />
-                            <Route path="/users/:Username" render={({ match }) => { return <ProfileView userInfo={userInfo} /> }} />
-                            <Route path="/update/:Username" render={() => <ProfileUpdate userInfo={userInfo} user={user} token={token} updateUser={data => this.updateUser(data)} />} />
+              <Route path="/genres/:name" render={({ match }) => {
+                if (!movies || !movies.length) return <div className="main-view" />;
+                return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
+              }
+              } />
+              <Route path="/users/:Username" render={({ match }) => { return <ProfileView userInfo={userInfo} /> }} />
+              <Route path="/update/:Username" render={() => <ProfileUpdate userInfo={userInfo} user={user} token={token} updateUser={data => this.updateUser(data)} />} />
 
-                        </Row>
+            </Row>
 
-                    </div>
-                </Container>
-            </Router>
-        );
-    }
+          </div>
+        </Container>
+      </Router>
+    );
+  }
 }
 
 let mapStateToProps = state => {
-    return { movies: state.movies }
+  return { movies: state.movies }
 }
 
 // #4
 export default connect(mapStateToProps, { setMovies })(MainView);
 
 MainView.propTypes = {
-    dispatch: propTypes.func
+  dispatch: propTypes.func
 };
