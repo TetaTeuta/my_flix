@@ -1,4 +1,4 @@
-node_modules/
+node_modules
 /cache
 /cache
 .cache/24/42261fe4168d2699a342ba63fe820c.json
@@ -7,3 +7,5 @@ node_modules/
 dist/src.78399e21.js
 dist/src.78399e21.js.map
 dist/src.78399e21.js
+.history
+.DS_Store
